@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Which Cat Are You?</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>Which Cat Are You?</h1>
+    <p class="lead">Answer a few fun questions to discover your feline personality!</p>
+
+    <form id="quizForm">
+      <!-- Questions 1-6 -->
+      <div class="question">
+        <strong>1. What's your ideal weekend activity?</strong>
+        <div class="opts">
+          <label class="option"><input type="radio" name="q1" value="lazy" required><span class="opt-text">Nap in the sun</span></label>
+          <label class="option"><input type="radio" name="q1" value="thief"><span class="opt-text">Sneak snacks</span></label>
+          <label class="option"><input type="radio" name="q1" value="fierce"><span class="opt-text">Explore & climb</span></label>
+          <label class="option"><input type="radio" name="q1" value="political"><span class="opt-text">Socialize and charm</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <strong>2. Someone takes your favorite spot. You...</strong>
+        <div class="opts">
+          <label class="option"><input type="radio" name="q2" value="lazy" required><span class="opt-text">Find another cozy corner</span></label>
+          <label class="option"><input type="radio" name="q2" value="thief"><span class="opt-text">Wait and reclaim it stealthily</span></label>
+          <label class="option"><input type="radio" name="q2" value="fierce"><span class="opt-text">Stare them down</span></label>
+          <label class="option"><input type="radio" name="q2" value="political"><span class="opt-text">Charm your way back</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <strong>3. Your human forgets dinner. You...</strong>
+        <div class="opts">
+          <label class="option"><input type="radio" name="q3" value="lazy" required><span class="opt-text">Shrug and nap</span></label>
+          <label class="option"><input type="radio" name="q3" value="thief"><span class="opt-text">Raid the cupboards</span></label>
+          <label class="option"><input type="radio" name="q3" value="fierce"><span class="opt-text">Yowl loudly</span></label>
+          <label class="option"><input type="radio" name="q3" value="political"><span class="opt-text">Persuasive stare until served</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <strong>4. Which toy would you pick?</strong>
+        <div class="opts">
+          <label class="option"><input type="radio" name="q4" value="lazy" required><span class="opt-text">Soft pillow</span></label>
+          <label class="option"><input type="radio" name="q4" value="thief"><span class="opt-text">Paper bag or box</span></label>
+          <label class="option"><input type="radio" name="q4" value="fierce"><span class="opt-text">Laser pointer</span></label>
+          <label class="option"><input type="radio" name="q4" value="political"><span class="opt-text">A toy to show off</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <strong>5. If you starred in a movie, you’d be...</strong>
+        <div class="opts">
+          <label class="option"><input type="radio" name="q5" value="lazy" required><span class="opt-text">Calm sidekick</span></label>
+          <label class="option"><input type="radio" name="q5" value="thief"><span class="opt-text">Clever trickster</span></label>
+          <label class="option"><input type="radio" name="q5" value="fierce"><span class="opt-text">Fearless hero</span></label>
+          <label class="option"><input type="radio" name="q5" value="political"><span class="opt-text">Smooth strategist</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <strong>6. You see another cat outside. You...</strong>
+        <div class="opts">
+          <label class="option"><input type="radio" name="q6" value="lazy" required><span class="opt-text">Ignore and lounge</span></label>
+          <label class="option"><input type="radio" name="q6" value="thief"><span class="opt-text">Follow stealthily</span></label>
+          <label class="option"><input type="radio" name="q6" value="fierce"><span class="opt-text">Challenge with a hiss</span></label>
+          <label class="option"><input type="radio" name="q6" value="political"><span class="opt-text">Greet diplomatically</span></label>
+        </div>
+      </div>
+
+      <!-- Lead capture as last step -->
+      <div class="question">
+        <strong>Almost done! Want your cat type emailed to you?</strong>
+        <div class="opts">
+          <input type="text" id="fname" placeholder="First Name">
+          <input type="email" id="email" placeholder="Email">
+          <button type="button" id="submitLead">Submit</button>
+          <button type="button" id="skipLead">Skip to Results</button>
+        </div>
+      </div>
+
+    </form>
+
+    <div id="result"></div>
+  </body>
+  <script>
+    const resultBox = document.getElementById('result');
+
+    const descriptions = {
+      lazy: "😴 You love comfort and naps. Sunbeams are your best friend.",
+      thief: "🕵️ Clever and sneaky, always up to playful mischief.",
+      fierce: "💪 Bold and brave, a true adventurer and protector.",
+      political: "🎩 Charming and strategic, you navigate life smoothly."
+    };
+
+    function tallyAnswers() {
+      const data = new FormData(document.getElementById('quizForm'));
+      const counts = { lazy:0, thief:0, fierce:0, political:0 };
+      for(let i=1;i<=6;i++){
+        const v = data.get('q'+i);
+        if(v && counts[v]!==undefined) counts[v]++;
+      }
+      return counts;
+    }
+
+    function showResult(){
+      const counts = tallyAnswers();
+      const entries = Object.entries(counts).sort((a,b)=>b[1]-a[1]);
+      const topScore = entries[0][1];
+      const topCats = entries.filter(e=>e[1]===topScore).map(e=>e[0]);
+      const chosen = topCats[Math.floor(Math.random()*topCats.length)];
+      resultBox.innerHTML = `<h3>Your Cat Type: ${chosen}</h3><p>${descriptions[chosen]}</p>`;
+      resultBox.style.display='block';
+      resultBox.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+
+    // Lead form handlers
+    document.getElementById('submitLead').addEventListener('click',()=>{
+      const name = document.getElementById('fname').value.trim();
+      const email = document.getElementById('email').value.trim();
+      if(!email){ alert("Enter valid email or skip."); return; }
+      console.log("Lead Submitted:", {name,email});
+      showResult();
+    });
+
+    document.getElementById('skipLead').addEventListener('click',()=>{
+      showResult();
+    });
+  </script>
+</html>

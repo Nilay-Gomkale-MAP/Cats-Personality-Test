@@ -1,0 +1,101 @@
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    max-width: 760px;
+    margin: 32px auto;
+    padding: 0 16px;
+    line-height: 1.5;
+    color: #111;
+}
+h1 {
+  font-size: 2rem;
+  margin-bottom: 4px;
+  text-align: center;
+}
+p.lead {
+  margin-top: 0;
+  color: #555;
+  text-align: center;
+  margin-bottom: 24px;
+}
+.question {
+  border: 1px solid #eee;
+  padding: 16px;
+  border-radius: 12px;
+  margin: 16px 0;
+  background: #fafafa;
+  transition: transform 0.15s ease;
+}
+.question:hover {
+  transform: translateY(-2px);
+}
+.opts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+label.option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 8px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #fff;
+}
+label.option:hover {
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.05);
+  transform: scale(1.02);
+}
+input[type="radio"] { margin-right: 8px; }
+input[type="radio"]:checked + .opt-text {
+  font-weight: 600;
+  color: #111;
+}
+.opt-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 6px;
+  object-fit: cover;
+  display: block;
+}
+.opt-img[src=""], .opt-img:not([src]) { display: none; }
+button {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 12px;
+}
+#skipLead {
+  background: none;
+  border: none;
+  color: #007BFF;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-left: 12px;
+  font-size: 0.9rem;
+}
+#result {
+  display: none;
+  margin-top: 24px;
+  padding: 18px;
+  border-radius: 12px;
+  background: #f6f9ff;
+  border: 1px solid #e0e8ff;
+  text-align: center;
+  font-size: 1.2rem;
+}
+input[type="text"], input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
