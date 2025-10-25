@@ -7,82 +7,145 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h1>Which Cat Are You?</h1>
-    <p class="lead">Answer a few fun questions to discover your feline personality!</p>
+    <h1>🐾 What Kind of Cat Are You?</h1>
+    <p class="intro">Answer these 7 quick questions to discover your feline alter ego.</p>
 
     <form id="quizForm">
-      <!-- Questions 1-6 -->
+      <!-- Question 1 -->
       <div class="question">
-        <strong>1. What's your ideal weekend activity?</strong>
-        <div class="opts">
-          <label class="option"><input type="radio" name="q1" value="lazy" required><span class="opt-text">Nap in the sun</span></label>
-          <label class="option"><input type="radio" name="q1" value="thief"><span class="opt-text">Sneak snacks</span></label>
-          <label class="option"><input type="radio" name="q1" value="fierce"><span class="opt-text">Explore & climb</span></label>
-          <label class="option"><input type="radio" name="q1" value="political"><span class="opt-text">Socialize and charm</span></label>
+        <strong>1. What’s your ideal weekend activity?</strong>
+        <div class="options">
+          <input type="radio" id="lazy1" name="q1" value="lazy">
+          <label for="lazy1">😴 Nap in the sun</label>
+
+          <input type="radio" id="thief1" name="q1" value="thief">
+          <label for="thief1">🕵️ Sneak snacks</label>
+
+          <input type="radio" id="fierce1" name="q1" value="fierce">
+          <label for="fierce1">🔥 Climb and explore</label>
+
+          <input type="radio" id="political1" name="q1" value="political">
+          <label for="political1">🎩 Host a dinner party</label>
         </div>
       </div>
 
+      <!-- Question 2 -->
       <div class="question">
         <strong>2. Someone takes your favorite spot. You...</strong>
-        <div class="opts">
-          <label class="option"><input type="radio" name="q2" value="lazy" required><span class="opt-text">Find another cozy corner</span></label>
-          <label class="option"><input type="radio" name="q2" value="thief"><span class="opt-text">Wait and reclaim it stealthily</span></label>
-          <label class="option"><input type="radio" name="q2" value="fierce"><span class="opt-text">Stare them down</span></label>
-          <label class="option"><input type="radio" name="q2" value="political"><span class="opt-text">Charm your way back</span></label>
+        <div class="options">
+          <input type="radio" id="lazy2" name="q2" value="lazy">
+          <label for="lazy2">😌 Find another cozy spot</label>
+
+          <input type="radio" id="thief2" name="q2" value="thief">
+          <label for="thief2">😼 Wait and reclaim it stealthily</label>
+
+          <input type="radio" id="fierce2" name="q2" value="fierce">
+          <label for="fierce2">👁️ Stare them down</label>
+
+          <input type="radio" id="political2" name="q2" value="political">
+          <label for="political2">😺 Charm them into moving</label>
         </div>
       </div>
 
+      <!-- Question 3 -->
       <div class="question">
-        <strong>3. Your human forgets dinner. You...</strong>
-        <div class="opts">
-          <label class="option"><input type="radio" name="q3" value="lazy" required><span class="opt-text">Shrug and nap</span></label>
-          <label class="option"><input type="radio" name="q3" value="thief"><span class="opt-text">Raid the cupboards</span></label>
-          <label class="option"><input type="radio" name="q3" value="fierce"><span class="opt-text">Yowl loudly</span></label>
-          <label class="option"><input type="radio" name="q3" value="political"><span class="opt-text">Persuasive stare until served</span></label>
+        <strong>3. Your dream snack is...</strong>
+        <div class="options">
+          <input type="radio" id="lazy3" name="q3" value="lazy">
+          <label for="lazy3">🍪 Something sweet & soft</label>
+
+          <input type="radio" id="thief3" name="q3" value="thief">
+          <label for="thief3">🍗 Anything I can “borrow”</label>
+
+          <input type="radio" id="fierce3" name="q3" value="fierce">
+          <label for="fierce3">🥩 Meat, obviously</label>
+
+          <input type="radio" id="political3" name="q3" value="political">
+          <label for="political3">🍸 A fancy treat</label>
         </div>
       </div>
 
+      <!-- Question 4 -->
       <div class="question">
-        <strong>4. Which toy would you pick?</strong>
-        <div class="opts">
-          <label class="option"><input type="radio" name="q4" value="lazy" required><span class="opt-text">Soft pillow</span></label>
-          <label class="option"><input type="radio" name="q4" value="thief"><span class="opt-text">Paper bag or box</span></label>
-          <label class="option"><input type="radio" name="q4" value="fierce"><span class="opt-text">Laser pointer</span></label>
-          <label class="option"><input type="radio" name="q4" value="political"><span class="opt-text">A toy to show off</span></label>
+        <strong>4. Your favorite time of day?</strong>
+        <div class="options">
+          <input type="radio" id="lazy4" name="q4" value="lazy">
+          <label for="lazy4">🌅 Morning naps</label>
+
+          <input type="radio" id="thief4" name="q4" value="thief">
+          <label for="thief4">🌃 Midnight mischief</label>
+
+          <input type="radio" id="fierce4" name="q4" value="fierce">
+          <label for="fierce4">☀️ Golden hour adventures</label>
+
+          <input type="radio" id="political4" name="q4" value="political">
+          <label for="political4">🕔 Early evening networking</label>
         </div>
       </div>
 
+      <!-- Question 5 -->
       <div class="question">
-        <strong>5. If you starred in a movie, you’d be...</strong>
-        <div class="opts">
-          <label class="option"><input type="radio" name="q5" value="lazy" required><span class="opt-text">Calm sidekick</span></label>
-          <label class="option"><input type="radio" name="q5" value="thief"><span class="opt-text">Clever trickster</span></label>
-          <label class="option"><input type="radio" name="q5" value="fierce"><span class="opt-text">Fearless hero</span></label>
-          <label class="option"><input type="radio" name="q5" value="political"><span class="opt-text">Smooth strategist</span></label>
+        <strong>5. Your best quality?</strong>
+        <div class="options">
+          <input type="radio" id="lazy5" name="q5" value="lazy">
+          <label for="lazy5">😌 Calm and chill</label>
+
+          <input type="radio" id="thief5" name="q5" value="thief">
+          <label for="thief5">😏 Clever and sneaky</label>
+
+          <input type="radio" id="fierce5" name="q5" value="fierce">
+          <label for="fierce5">💪 Brave and bold</label>
+
+          <input type="radio" id="political5" name="q5" value="political">
+          <label for="political5">🧠 Charming and strategic</label>
         </div>
       </div>
 
+      <!-- Question 6 -->
       <div class="question">
-        <strong>6. You see another cat outside. You...</strong>
-        <div class="opts">
-          <label class="option"><input type="radio" name="q6" value="lazy" required><span class="opt-text">Ignore and lounge</span></label>
-          <label class="option"><input type="radio" name="q6" value="thief"><span class="opt-text">Follow stealthily</span></label>
-          <label class="option"><input type="radio" name="q6" value="fierce"><span class="opt-text">Challenge with a hiss</span></label>
-          <label class="option"><input type="radio" name="q6" value="political"><span class="opt-text">Greet diplomatically</span></label>
+        <strong>6. How do you make friends?</strong>
+        <div class="options">
+          <input type="radio" id="lazy6" name="q6" value="lazy">
+          <label for="lazy6">😴 They come to me</label>
+
+          <input type="radio" id="thief6" name="q6" value="thief">
+          <label for="thief6">🎁 Through gifts (sometimes stolen)</label>
+
+          <input type="radio" id="fierce6" name="q6" value="fierce">
+          <label for="fierce6">🔥 Through mutual respect</label>
+
+          <input type="radio" id="political6" name="q6" value="political">
+          <label for="political6">🗣️ Through smooth talk</label>
         </div>
       </div>
 
-      <!-- Lead capture as last step -->
+      <!-- Question 7 -->
       <div class="question">
-        <strong>Almost done! Want your cat type emailed to you?</strong>
-        <div class="opts">
-          <input type="text" id="fname" placeholder="First Name">
-          <input type="email" id="email" placeholder="Email">
-          <button type="button" id="submitLead">Submit</button>
-          <button type="button" id="skipLead">Skip to Results</button>
+        <strong>7. Pick your dream home:</strong>
+        <div class="options">
+          <input type="radio" id="lazy7" name="q7" value="lazy">
+          <label for="lazy7">🛋️ Soft couch palace</label>
+
+          <input type="radio" id="thief7" name="q7" value="thief">
+          <label for="thief7">🏚️ Cozy secret hideout</label>
+
+          <input type="radio" id="fierce7" name="q7" value="fierce">
+          <label for="fierce7">🏔️ Mountain cave with view</label>
+
+          <input type="radio" id="political7" name="q7" value="political">
+          <label for="political7">🏰 Grand villa with guests</label>
         </div>
       </div>
 
+      <!-- Lead Capture -->
+      <div id="leadStep">
+        <strong>Almost done! 🐾</strong>
+        <p>Would you like to receive your cat type by email?</p>
+        <input type="text" id="fname" placeholder="First Name (optional)">
+        <input type="email" id="email" placeholder="Email">
+        <button type="button" id="submitLead">Submit</button>
+        <button id="skipLead">Skip to results</button>
+      </div>
     </form>
     <div id="result"></div>
   </body>
