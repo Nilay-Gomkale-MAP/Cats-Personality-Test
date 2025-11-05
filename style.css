@@ -6,6 +6,7 @@
     IGNORE: Code that is not relevant to the current project
 */
 
+/* General Styles */
 :root {
     font-size: 16px;
     color: #ffffff;
@@ -40,52 +41,6 @@ p {
     margin: 0px;
 }
 
-#startButton {
-    display: flex;
-    position: relative;
-    width: 248px;
-    padding: 16px 36px;
-    align-items: center;
-    border-radius: var(--rounded-full, 9999px);
-    border: 4px solid var(--Background-Primary, #000);
-    background: var(--Gulabi-200, #FF99CF);
-    font-family: var(--body, "Source Sans 3");
-    font-size: 20px;
-    font-style: normal;
-    font-weight: var(--font-bold, 700);
-    line-height: 28px; /* 140% */
-}
-
-#startButton:active {
-    background: var(--Gulabi-400, #FF1F96);
-}
-
-#pawPrint{
-    width: 85px;
-    height: 85px;   
-    position: absolute;
-    right: -17px;
-    top: -25.011px;
-}
-
-#pawPrint path {
-    fill: #FF99CF;
-}
-
-#pawPrint .blackPath {
-    fill: black;
-}
-
-/* When the start button is pressed, change the paw color to match the active CTA */
-#startButton:active #pawPrint path {
-    fill: var(--Gulabi-400, #FF1F96);
-}
-
-/* Optionally invert the black detail for contrast while active */
-#startButton:active #pawPrint .blackPath {
-    fill: black;
-}
-
 /* TO BE MODIFIED: This is where the hero section creative would go */
 #heroSection {
     display: flex;
@@ -102,188 +57,6 @@ p {
     font-weight: 400;
     text-align: center; 
     margin-top: 24px;
-}
-
-/* @media screen and (min-width: 768px){
-    #heroSection {
-        aspect-ratio: 2/1;
-        background: url(heroSection-iPad-alt.png);
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-}
-@media screen and (min-width: 1024px) and (orientation: landscape){
-    #heroSection {
-        aspect-ratio: 3/1;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-}
-@media screen and (min-width: 1024px) and (orientation: portrait){
-    #heroSection {
-        aspect-ratio: 2/1;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-} */
-
-#logoContainer{
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    margin-top: 24px;
-}
-
-#logoContainer img{
-    height: 68px; 
-    width: auto;
-}
-@media screen and (min-width: 768px) and (orientation: portrait) {
-    #logoContainer{
-        display: flex; 
-        justify-content: center; 
-        align-items: center; 
-        padding: 32px 0px;
-    }
-    #logoContainer img{
-        height: 80px; 
-        width: auto;
-    }
-}
-@media screen and (min-width: 1024px){
-    #logoContainer{
-        display: flex; 
-        justify-content: center; 
-        align-items: center; 
-        padding: 32px 0px;
-    }
-    #logoContainer img{
-        height: 88px; 
-        width: auto;
-    }
-}
-
-.dividerCat{
-    display: flex;
-    padding: 0 16px;
-    margin-top: 24px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    align-self: stretch;
-}
-
-#contentContainer {
-    display: flex;
-    padding: 24px 16px;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-    text-align: center;
-    align-self: stretch;
-    border-radius: 24px 24px 0 0;
-    /* background: #000000; */
-}
-
-.instructionSet {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.instructionSet p{
-    font-family: 'source sans 3', sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
-    text-align: center;
-    line-height: 1.5rem;
-    color: var(--Text-Body-Black);
-    margin: 0px;
-}
-
-.instructionCat{
-    position: relative;
-    width: 80px;
-    height: auto;
-}
-
-.instructionCat p{
-    position: absolute; 
-    font-size: 20px;
-    right: 36px;
-    bottom: 16px;
-    font-family: 'bree serif', serif; 
-    font-weight: 400;
-    color: white;
-}
-
-.hashTags {
-    font-family: 'bree serif', serif;
-    font-weight: 400;
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-    margin: 0px;
-}
-
-/* Book Ticket Button in Webpage, not to be confused with Book Ticket but in AR mode */
-#bookTicket {
-    display: flex;
-    min-width: 144px;
-    padding: 12px 20px;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    border-radius: 6px;
-    border: 1px solid #000000;
-    background: #ffffff;
-    text-decoration: none;
-    color: var(--Text-Body-Black);
-    font-weight: 600;
-    font-family: 'source sans 3', sans-serif;
-}
-#bookTicket:active{
-    background: #000000;
-    color: var(--accent-color);
-    border: 1px solid var(--accent-color);
-}
-
-/* TO BE MODIFIED: TEXTURE BACKGROUND */
-#bgTexture {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-    opacity: 0.5;
-    background: url(Tiling_bg.jpg);
-    /* background-size: cover; */
-    background-repeat: repeat;
-    mix-blend-mode: multiply;
-}
-
-
-/* All outbound links are styled here */
-.link-button {
-    text-decoration: none;
-    color: var(--Text-Body-Black);
-    font-weight: 600;
-}
-.link-button:hover,
-.link-button:active {
-    text-decoration: underline;
-}
-
-/* Google Symbols Import */
-.material-symbols-outlined {
-    font-variation-settings:
-        'FILL' 1,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24
 }
 
 /* Responsive Lottie used in the hero - replaces the inline fixed sizing */
@@ -356,6 +129,240 @@ dotlottie-wc {
         display: block;
         object-fit: contain;
     }
+}
+
+/* @media screen and (min-width: 768px){
+    #heroSection {
+        aspect-ratio: 2/1;
+        background: url(heroSection-iPad-alt.png);
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
+@media screen and (min-width: 1024px) and (orientation: landscape){
+    #heroSection {
+        aspect-ratio: 3/1;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
+@media screen and (min-width: 1024px) and (orientation: portrait){
+    #heroSection {
+        aspect-ratio: 2/1;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+} */
+
+/* Main CTA Button styles */
+#startButton {
+    display: flex;
+    position: relative;
+    width: 248px;
+    padding: 16px 36px;
+    align-items: center;
+    border-radius: var(--rounded-full, 9999px);
+    border: 4px solid var(--Background-Primary, #000);
+    background: var(--Gulabi-200, #FF99CF);
+    font-family: var(--body, "Source Sans 3");
+    font-size: 20px;
+    font-style: normal;
+    font-weight: var(--font-bold, 700);
+    line-height: 28px; /* 140% */
+}
+
+#startButton:active {
+    background: var(--Gulabi-400, #FF1F96);
+}
+
+#pawPrint{
+    width: 85px;
+    height: 85px;   
+    position: absolute;
+    right: -17px;
+    top: -25.011px;
+}
+
+#pawPrint path {
+    fill: #FF99CF;
+}
+
+#pawPrint .blackPath {
+    fill: black;
+}
+
+/* When the start button is pressed, change the paw color to match the active CTA */
+#startButton:active #pawPrint path {
+    fill: var(--Gulabi-400, #FF1F96);
+}
+
+/* Optionally invert the black detail for contrast while active */
+#startButton:active #pawPrint .blackPath {
+    fill: black;
+}
+
+/* Main CTA styles END */
+
+/* Map Logo Styles */
+#logoContainer{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 24px;
+}
+
+#logoContainer img{
+    height: 68px; 
+    width: auto;
+}
+@media screen and (min-width: 768px) and (orientation: portrait) {
+    #logoContainer{
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        padding: 32px 0px;
+    }
+    #logoContainer img{
+        height: 80px; 
+        width: auto;
+    }
+}
+@media screen and (min-width: 1024px){
+    #logoContainer{
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        padding: 32px 0px;
+    }
+    #logoContainer img{
+        height: 88px; 
+        width: auto;
+    }
+}
+/* Map Logo Styles END */
+
+.dividerCat{
+    display: flex;
+    padding: 0 16px;
+    margin-top: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+}
+
+#contentContainer {
+    display: flex;
+    padding: 24px 16px;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+    align-self: stretch;
+    border-radius: 24px 24px 0 0;
+    /* background: #000000; */
+}
+
+.instructionSet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.instructionSet p{
+    font-family: 'source sans 3', sans-serif;
+    font-weight: 600;
+    font-size: 1.125rem;
+    text-align: center;
+    line-height: 1.5rem;
+    color: var(--Text-Body-Black);
+    margin: 0px;
+}
+
+.instructionCat{
+    position: relative;
+    width: 80px;
+    height: auto;
+}
+
+.instructionCat p{
+    position: absolute; 
+    font-size: 20px;
+    right: 36px;
+    bottom: 16px;
+    font-family: 'bree serif', serif; 
+    font-weight: 400;
+    color: white;
+}
+
+.hashTags {
+    font-family: 'bree serif', serif;
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    margin: 0px;
+}
+
+/* Learn More Button in Webpage to replace Book Ticket Button */
+#learnMore {
+    display: flex;
+    min-width: 144px;
+    padding: 12px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 6px;
+    border: 1px solid #000000;
+    background: #ffffff;
+    text-decoration: none;
+    color: var(--Text-Body-Black);
+    font-weight: 600;
+    font-family: 'source sans 3', sans-serif;
+}
+#learnMore:active{
+    background: #000000;
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+}
+
+/* TEXTURE BACKGROUND */
+#bgTexture {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.5;
+    background: url(Tiling_bg.jpg);
+    /* background-size: cover; */
+    background-repeat: repeat;
+    mix-blend-mode: multiply;
+}
+
+
+/* All outbound links are styled here */
+.link-button {
+    text-decoration: none;
+    color: var(--Text-Body-Black);
+    font-weight: 600;
+}
+.link-button:hover,
+.link-button:active {
+    text-decoration: underline;
+}
+
+/* Google Symbols Import */
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 1,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
 }
 
 
