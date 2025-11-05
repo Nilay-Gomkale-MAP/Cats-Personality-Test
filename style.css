@@ -46,7 +46,6 @@ p {
     width: 248px;
     padding: 16px 36px;
     align-items: center;
-    gap: 10px;
     border-radius: var(--rounded-full, 9999px);
     border: 4px solid var(--Background-Primary, #000);
     background: var(--Gulabi-200, #FF99CF);
@@ -91,22 +90,24 @@ p {
 #heroSection {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 32px;
     justify-content: center;
     align-items: center;
     width: 100%;
-    /* aspect-ratio: 1/1; */
-    text-align: center;
-    background: url(heroSection-mobile-alt.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 }
-@media screen and (min-width: 768px){
+
+#heroSection p{
+    font-family: 'bree serif', serif;
+    font-size: 20px; 
+    font-weight: 400;
+    text-align: center; 
+    margin-top: 24px;
+}
+
+/* @media screen and (min-width: 768px){
     #heroSection {
         aspect-ratio: 2/1;
         background: url(heroSection-iPad-alt.png);
-        /* background-size: contain; */
         background-position: center;
         background-repeat: no-repeat;
     }
@@ -126,13 +127,13 @@ p {
         background-position: center;
         background-repeat: no-repeat;
     }
-}
+} */
 
 #logoContainer{
     display: flex; 
     justify-content: center; 
     align-items: center; 
-    padding: 24px 0px;
+    margin-top: 24px;
 }
 
 #logoContainer img{
@@ -164,6 +165,16 @@ p {
     }
 }
 
+.dividerCat{
+    display: flex;
+    padding: 0 16px;
+    margin-top: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+}
+
 #contentContainer {
     display: flex;
     padding: 24px 16px;
@@ -180,7 +191,6 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
 }
 
 .instructionSet p{
