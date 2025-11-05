@@ -39,7 +39,7 @@ p {
     justify-content: center;
     align-items: center;
     width: 100%;
-    aspect-ratio: 1/1;
+    /* aspect-ratio: 1/1; */
     text-align: center;
     background: url(heroSection-mobile-alt.png);
     background-size: cover;
@@ -199,3 +199,64 @@ dotlottie-wc {
     max-width: 100%;
     height: auto;
 }
+
+/* Robust intrinsic-ratio wrapper for the hero animation.
+   This technique creates a square container that scales with width
+   and forces the dotlottie/CANVAS to fill it regardless of inline sizing. */
+.hero-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    padding-top: 100%; /* 1:1 aspect ratio */
+    overflow: hidden;
+}
+
+.hero-wrapper .hero-lottie,
+.hero-wrapper dotlottie-wc {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+}
+
+/* Force the internal canvas (rendered by the webcomponent) to fill the host.
+   Use object-fit to control how the animation scales inside the square. */
+.hero-wrapper .hero-lottie canvas,
+.hero-wrapper dotlottie-wc canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    object-fit: cover; /* use 'contain' if you prefer no cropping */
+}
+
+/* Mobile: force a square hero and make the lottie canvas fill it.
+   This prevents the component's internal canvas from choosing a 2:1 size. */
+@media screen and (max-width: 767px) {
+    #heroSection {
+        /* ensure hero area is square on small screens */
+        aspect-ratio: 1/1;
+        width: 100%;
+    }
+
+    .hero-lottie {
+        /* fill the hero area so the animation appears end-to-end */
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    /* the dotlottie webcomponent renders a <canvas> internally; force it to fill
+       the host so the visual aspect matches the square container. Use !important
+       because the component may set inline sizes at runtime. */
+    .hero-lottie canvas,
+    dotlottie-wc canvas {
+        width: 100% !important;
+        height: 100% !important;
+        display: block;
+        object-fit: contain;
+    }
+}
+
+

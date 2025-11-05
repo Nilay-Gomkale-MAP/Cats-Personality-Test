@@ -10,7 +10,7 @@ NOTE: REMOVE INTRODUCTION WHEN GOING TO PRODUCTION
         <!-- Mobile viewport for responsive scaling -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Please add the Google Tracking Tags and all the usual attachments -->
-        <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+        <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.7.1/dist/dotlottie-wc.js" type="module"></script>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="footer.min.css"> <!-- Downloaded from MAP-India Website -->
 
@@ -32,10 +32,13 @@ NOTE: REMOVE INTRODUCTION WHEN GOING TO PRODUCTION
 
         <!-- Hero Section - Uses between one of two images depending on screen size and orientation -->
         <div id="heroSection">
-            <dotlottie-wc
-                class="hero-lottie"
-                src="https://lottie.host/8e09eb74-3e5e-470d-b602-90b4c5f4d1d2/ZN0YJXVCrQ.lottie"
-                autoplay loop></dotlottie-wc>
+            <!-- Intrinsic-ratio wrapper ensures the hero stays square and the lottie fills it -->
+            <div class="hero-wrapper">
+                <dotlottie-wc
+                    class="hero-lottie"
+                    src="https://lottie.host/8e09eb74-3e5e-470d-b602-90b4c5f4d1d2/ZN0YJXVCrQ.lottie"
+                    autoplay loop></dotlottie-wc>
+            </div>
         </div>
 
         <!-- Context, Instructions and Messaging -->
