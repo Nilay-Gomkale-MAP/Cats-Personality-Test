@@ -212,7 +212,7 @@ p {
     align-items: center;
     border-radius: var(--rounded-full, 9999px);
     border: 4px solid var(--Background-Primary, #000);
-    background: var(--Gulabi-200, #FF99CF);
+    background: var(--Gulabi-200);
     font-family: var(--body, "Source Sans 3");
     font-size: 20px;
     font-style: normal;
@@ -222,7 +222,7 @@ p {
 }
 
 #startButton:active {
-    background: var(--Gulabi-400, #FF1F96);
+    background: var(--Gulabi-300);
 }
 
 #pawPrint{
@@ -234,7 +234,7 @@ p {
 }
 
 #pawPrint path {
-    fill: #FF99CF;
+    fill: var(--Gulabi-200);
 }
 
 #pawPrint .blackPath {
@@ -243,7 +243,7 @@ p {
 
 /* When the start button is pressed, change the paw color to match the active CTA */
 #startButton:active #pawPrint path {
-    fill: var(--Gulabi-400, #FF1F96);
+    fill: var(--Gulabi-300);
 }
 
 /* Optionally invert the black detail for contrast while active */
