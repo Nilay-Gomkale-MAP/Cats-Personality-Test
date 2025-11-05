@@ -5,26 +5,64 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Which Cat Are You?</title>
     <link rel="stylesheet" href="/style2.css">
+    <link rel="stylesheet" href="/footer.min.css"> <!-- Downloaded from MAP-India Website -->
+
+    <!-- Google Fonts import for Bree Serif & Source Sans 3-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+        <title>Which Meowseum Cat are You?</title>
   </head>
   <body>
-    <h1>What Kind of Cat Are You?</h1>
-    <p class="intro">Answer these 7 quick questions to discover your feline alter ego.</p>
+    <div class="mainContainer" style="padding: 24px 16px;">
+      <h1>What Kind of Cat Are You?</h1>
+      <p class="intro">Answer these 7 quick questions to discover your feline alter ego.</p>
 
-    <form id="quizForm">
-      <div id="questionsContainer"></div>
+      <form id="quizForm">
+        <div id="questionsContainer"></div>
 
-      <div id="leadStep">
-        <strong>Almost done!</strong>
-        <p>Would you like to receive your cat type by email?</p>
-        <input type="text" id="fname" placeholder="First Name (optional)">
-        <input type="email" id="email" placeholder="Email">
-        <button type="button" id="submitLead">Submit</button>
-        <button id="skipLead">Skip to results</button>
-        <div id="errorMsg"></div>
-      </div>
-    </form>
+        <div id="leadStep">
+          <strong>Almost done!</strong>
+          <p>Would you like to receive your cat type by email?</p>
+          <input type="text" id="fname" placeholder="First Name (optional)">
+          <input type="email" id="email" placeholder="Email">
+          <button type="button" id="submitLead">Submit</button>
+          <button id="skipLead">Skip to results</button>
+          <div id="errorMsg"></div>
+        </div>
+      </form>
 
-    <div id="result"></div>
+      <div id="result"></div>
+    </div>
+
+    <!-- Footer Element Copied from MAP-India Website and modified to work here -->
+        <section class="footer">
+            <div class="new-wrapper">
+                <div class="footer__social-icons">				
+                    <a href="https://www.instagram.com/mapbangalore/" target="_blank" tabindex="0"><img width="24px" height="24px" src="https://map-india.org/wp-content/uploads/2023/09/instagram.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" loading="lazy"></a>
+                    <a href="https://twitter.com/MAPBangalore" target="_blank" tabindex="0"><img width="24px" height="24px" src="https://map-india.org/wp-content/uploads/2023/09/twitter.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" loading="lazy"></a>
+                    <a href="https://www.facebook.com/MuseumofArtandPhotography/" target="_blank" tabindex="0"><img width="24px" height="24px" src="https://map-india.org/wp-content/uploads/2023/09/facebook.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" loading="lazy"></a>
+                    <a href="https://www.linkedin.com/company/museumofartandphotography" target="_blank" tabindex="0"><img width="24px" height="24px" src="https://map-india.org/wp-content/uploads/2023/09/linkedin.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" loading="lazy"></a>
+                    <a href="https://www.youtube.com/MuseumofArtandPhotography" target="_blank" tabindex="0"><img width="24px" height="24px" src="https://map-india.org/wp-content/uploads/2023/09/youtube.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" loading="lazy"></a>
+                    <a href="https://in.pinterest.com/MAP_Online/" target="_blank" tabindex="0"><img width="24px" height="24px" src="https://map-india.org/wp-content/uploads/2023/09/pinterest.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" loading="lazy"></a>
+                    <a href="http://bit.ly/3Y7Hudp" target="_blank" tabindex="0"><img width="24px" height="24px" src="https://map-india.org/wp-content/uploads/2024/10/whatsapp.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" loading="lazy"></a>
+                    <a href="mailto:hello@map-india.org" target="_blank" tabindex="0"><img width="24px" height="24px" src="https://map-india.org/wp-content/uploads/2023/09/envelope-solid.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" loading="lazy"></a>
+                </div>
+                <div class="footer__copyright-container">
+                    <p tabindex="0">© Museum of Art &amp; Photography 2024. <span tabindex="0">All rights reserved. | <a href="https://map-india.org/terms-and-conditions/" tabindex="0" style="text-decoration: none;">Policies &amp; Statements</a> | <a href="https://map-india.org/safeguarding-policy/" tabindex="0" style="text-decoration: none;">Safeguarding Policy</a>| <a href="https://map-india.org/wp-content/uploads/2025/07/PoSH-and-PSEA_2025.pdf" target="_blank" tabindex="0" style="text-decoration: none;">PoSH Policy</a></span></p>
+                </div> <!-- .footer__copyright-container -->
+                <div class="footer__home-up-link">
+                    <a href="https://map-india.org/" tabindex="0"><img src="https://map-india.org/wp-content/themes/maptheme20/assets/images/home.svg" alt="Home" style="padding: 0px 6px;"></a>
+                    <a href="#" id="top-button" tabindex="0"><img src="https://map-india.org/wp-content/themes/maptheme20/assets/images/arrow-up.svg" alt="Top Button" style="padding: 0px 6px;"></a>
+                </div> <!-- .footer__home-up-link -->
+            </div>
+        </section>
+
+        <!-- Texture Background -->
+        <div id="bgTexture"></div>
   </body>
   <script src="personality.js"></script>
 </html>

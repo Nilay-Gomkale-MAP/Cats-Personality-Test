@@ -24,8 +24,14 @@ body {
     background: var(--primary-color);
 }
 
+.mainContainer{
+    max-width: 700px;
+    margin: 0px auto;
+}
+
 h2{
     font-family: "Bree Serif", serif;
+    font-size: 1.5rem;
     font-weight: 400;
     font-style: normal;
     color: var(--Text-Body-Black);
@@ -41,6 +47,44 @@ p {
     margin: 0px;
 }
 
+/* Map Logo Styles */
+#logoContainer{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 24px;
+}
+
+#logoContainer img{
+    height: 68px; 
+    width: auto;
+}
+@media screen and (min-width: 768px) and (orientation: portrait) {
+    #logoContainer{
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        padding: 32px 0px;
+    }
+    #logoContainer img{
+        height: 80px; 
+        width: auto;
+    }
+}
+@media screen and (min-width: 1024px){
+    #logoContainer{
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        /* padding: 32px 0px; */
+    }
+    #logoContainer img{
+        height: 80px; 
+        width: auto;
+    }
+}
+/* Map Logo Styles END */
+
 /* TO BE MODIFIED: This is where the hero section creative would go */
 #heroSection {
     display: flex;
@@ -49,27 +93,19 @@ p {
     justify-content: center;
     align-items: center;
     width: 100%;
+    height: auto;
+    max-width: 512px; /* constrains hero width on all devices */
+    margin: 0 auto;   /* centers the hero */
+    aspect-ratio: 1/1;
 }
 
 #heroSection p{
+    position: relative;
     font-family: 'bree serif', serif;
     font-size: 20px; 
     font-weight: 400;
     text-align: center; 
     margin-top: 24px;
-}
-
-/* Responsive Lottie used in the hero - replaces the inline fixed sizing */
-.hero-lottie {
-    display: block;
-    width: 100%;
-    height: auto; /* let the element keep its intrinsic aspect ratio */
-}
-
-/* Small safety override for any dotlottie-wc tags without the class */
-dotlottie-wc {
-    max-width: 100%;
-    height: auto;
 }
 
 /* Robust intrinsic-ratio wrapper for the hero animation.
@@ -78,9 +114,15 @@ dotlottie-wc {
 .hero-wrapper {
     position: relative;
     width: 100%;
-    max-width: 100%;
     padding-top: 100%; /* 1:1 aspect ratio */
     overflow: hidden;
+}
+
+/* Responsive Lottie used in the hero - replaces the inline fixed sizing */
+.hero-lottie {
+    display: block;
+    width: 100%;
+    height: auto; /* let the element keep its intrinsic aspect ratio */
 }
 
 .hero-wrapper .hero-lottie,
@@ -105,23 +147,23 @@ dotlottie-wc {
 
 /* Mobile: force a square hero and make the lottie canvas fill it.
    This prevents the component's internal canvas from choosing a 2:1 size. */
-@media screen and (max-width: 767px) {
+/* @media screen and (max-width: 767px) {
     #heroSection {
-        /* ensure hero area is square on small screens */
+        ensure hero area is square on small screens
         aspect-ratio: 1/1;
         width: 100%;
     }
 
     .hero-lottie {
-        /* fill the hero area so the animation appears end-to-end */
+        fill the hero area so the animation appears end-to-end
         width: 100%;
         height: 100%;
         display: block;
     }
 
-    /* the dotlottie webcomponent renders a <canvas> internally; force it to fill
+    the dotlottie webcomponent renders a <canvas> internally; force it to fill
        the host so the visual aspect matches the square container. Use !important
-       because the component may set inline sizes at runtime. */
+       because the component may set inline sizes at runtime.
     .hero-lottie canvas,
     dotlottie-wc canvas {
         width: 100% !important;
@@ -129,7 +171,7 @@ dotlottie-wc {
         display: block;
         object-fit: contain;
     }
-}
+} */
 
 /* @media screen and (min-width: 768px){
     #heroSection {
@@ -171,6 +213,7 @@ dotlottie-wc {
     font-style: normal;
     font-weight: var(--font-bold, 700);
     line-height: 28px; /* 140% */
+    cursor:pointer;
 }
 
 #startButton:active {
@@ -205,52 +248,24 @@ dotlottie-wc {
 
 /* Main CTA styles END */
 
-/* Map Logo Styles */
-#logoContainer{
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    margin-top: 24px;
-}
-
-#logoContainer img{
-    height: 68px; 
-    width: auto;
-}
-@media screen and (min-width: 768px) and (orientation: portrait) {
-    #logoContainer{
-        display: flex; 
-        justify-content: center; 
-        align-items: center; 
-        padding: 32px 0px;
-    }
-    #logoContainer img{
-        height: 80px; 
-        width: auto;
-    }
-}
-@media screen and (min-width: 1024px){
-    #logoContainer{
-        display: flex; 
-        justify-content: center; 
-        align-items: center; 
-        padding: 32px 0px;
-    }
-    #logoContainer img{
-        height: 88px; 
-        width: auto;
-    }
-}
-/* Map Logo Styles END */
-
 .dividerCat{
     display: flex;
     padding: 0 16px;
     margin-top: 24px;
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
     align-self: stretch;
+}
+
+@media screen and (min-width: 768px) {
+    #heroSection {
+        max-width: 400px;
+    }
+    
+    .dividerCat svg{
+        width: 75%;
+        align-self: center; 
+    }
 }
 
 #contentContainer {
@@ -364,5 +379,3 @@ dotlottie-wc {
         'GRAD' 0,
         'opsz' 24
 }
-
-
