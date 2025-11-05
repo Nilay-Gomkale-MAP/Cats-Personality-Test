@@ -68,9 +68,9 @@ const quizData = [
 
   quizData.forEach((qObj, i) => {
     const qDiv = document.createElement("div");
-    qDiv.classList.add("question");
+    qDiv.classList.add("questionBox");
     qDiv.innerHTML = `<strong>${i + 1}. ${qObj.q}</strong>
-      <div class="options">
+      <div class="optionsGrid">
         ${qObj.options.map((opt, idx) => `
           <input type="radio" id="q${i+1}_${idx}" name="q${i+1}" value="${opt.value}">
           <label for="q${i+1}_${idx}">

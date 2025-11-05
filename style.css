@@ -8,15 +8,20 @@
 
 /* General Styles */
 :root {
-    font-size: 16px;
-    color: #ffffff;
-    font-family: 'Source Sans 3', sans-serif;
-    margin: 0;
-    --primary-color: #F2CC9D;
-    --Gulabi-200: #FF99CF;
-    --Gulabi-300: #FF5C82;
-    --Text-Body-White: #FFFFFF;
-    --Text-Body-Black: #1F1F1F;
+  font-size: 16px;
+  color: #ffffff;
+  font-family: 'Source Sans 3', sans-serif;
+  margin: 0;
+  --primary-color: #F2CC9D;
+  --Gulabi-100: #FFDCE6;
+  --Gulabi-200: #FF99CF;
+  --Gulabi-300: #FF5CB3;
+  --Gulabi-400: #FF1F96;
+  --Gluabi-500: #D0006F;
+  --Text-Body-White: #FFFFFF;
+  --Text-Body-Black: #1F1F1F;
+  --Option-Label-Fill: #FFF7ED;
+  --Option-Label-Border: #FFDAAD;
 }
 
 body {
