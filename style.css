@@ -195,14 +195,15 @@ p {
 
 .instructionCat{
     position: relative;
-    width: 64px;
+    width: 80px;
     height: auto;
 }
 
 .instructionCat p{
     position: absolute; 
-    left: 28px; 
-    bottom: 8.23px;
+    font-size: 20px;
+    right: 36px;
+    bottom: 16px;
     font-family: 'bree serif', serif; 
     font-weight: 400;
     color: white;
