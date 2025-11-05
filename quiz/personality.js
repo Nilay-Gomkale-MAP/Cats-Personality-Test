@@ -64,6 +64,13 @@ const quizData = [
     }
   ];
 
+  const descriptions = {
+    lazy: "😴 You’re the Lazy Cat — calm, cozy, and unbothered by chaos. Life is a nap between snacks.",
+    thief: "🕵️ You’re the Thief Cat — mischievous, clever, and always one paw ahead of everyone.",
+    fierce: "🔥 You’re the Fierce Cat — brave, loyal, and unstoppable when you set your mind to something.",
+    political: "🎩 You’re the Political Cat — charming, sociable, and always working the room with grace."
+  };
+
   const questionsContainer = document.getElementById("questionsContainer");
 
   quizData.forEach((qObj, i) => {
@@ -82,18 +89,17 @@ const quizData = [
     questionsContainer.appendChild(qDiv);
   });
 
+  // Elements called via ID or class
+  const navBack = document.getElementById('navBack');
+  const restartQuiz = document.getElementById('restartQuiz');
+  const quizHeader = document.getElementById('quizHeader');
+  const leadStep = document.getElementById('leadStep');
   const resultBox = document.getElementById('result');
-  const errorMsg = document.getElementById('errorMsg');
-
-  const descriptions = {
-    lazy: "😴 You’re the Lazy Cat — calm, cozy, and unbothered by chaos. Life is a nap between snacks.",
-    thief: "🕵️ You’re the Thief Cat — mischievous, clever, and always one paw ahead of everyone.",
-    fierce: "🔥 You’re the Fierce Cat — brave, loyal, and unstoppable when you set your mind to something.",
-    political: "🎩 You’re the Political Cat — charming, sociable, and always working the room with grace."
-  };
+  const dividerCat = document.querySelector('.dividerCat');
+  const errorMsg = document.querySelector('.errorMsg');
+  const form = document.getElementById('quizForm');
 
   function tallyAnswers() {
-    const form = document.getElementById('quizForm');
     const data = new FormData(form);
     const counts = { lazy: 0, thief: 0, fierce: 0, political: 0 };
     for (let i = 1; i <= quizData.length; i++) {
@@ -123,8 +129,16 @@ const quizData = [
     const topScore = entries[0][1];
     const topCats = entries.filter(e => e[1] === topScore).map(e => e[0]);
     const chosen = topCats[Math.floor(Math.random() * topCats.length)];
-    resultBox.innerHTML = `<h3>Your Cat Type: ${chosen.toUpperCase()}</h3><p>${descriptions[chosen]}</p><p class="muted">Scores: ${JSON.stringify(counts)}</p>`;
+    resultBox.innerHTML = `<h3>Your Cat Type: ${chosen.toUpperCase()}</h3><p>${descriptions[chosen]}</p>`;
+
+    // Display adjustments
     resultBox.style.display = "block";
+    quizHeader.style.display = "none";
+    form.style.display = "none";
+    leadStep.style.display = "flex";
+    navBack.style.display = "none";
+    restartQuiz.style.display = "flex";
+    dividerCat.style.display = "block";
     resultBox.scrollIntoView({ behavior: "smooth" });
   }
 
@@ -132,6 +146,10 @@ const quizData = [
     if (!validateQuiz()) return;
     errorMsg.style.display = "none";
     showResult();
+  });
+
+  document.getElementById('restartQuiz').addEventListener('click', () => {
+    location.reload();
   });
 
   document.getElementById('submitLead').addEventListener('click', () => {
@@ -143,12 +161,11 @@ const quizData = [
       return;
     }
     errorMsg.style.display = "none";
-    showResult();
   });
 
-  document.getElementById('skipLead').addEventListener('click', (e) => {
-    e.preventDefault();
-    if (!validateQuiz()) return;
-    errorMsg.style.display = "none";
-    showResult();
-  });
+  // document.getElementById('skipLead').addEventListener('click', (e) => {
+  //   e.preventDefault();
+  //   if (!validateQuiz()) return;
+  //   errorMsg.style.display = "none";
+  //   showResult();
+  // });

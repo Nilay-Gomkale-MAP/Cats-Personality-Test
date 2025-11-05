@@ -411,6 +411,22 @@ h1 {
   margin: 0;
 }
 
+#restartQuiz{
+    display: none;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    background: none; 
+    border: none; 
+    cursor: pointer; 
+    font-size: 1rem; 
+    color: var(--Text-Body-Black); 
+    /* display: flex;  */
+    align-items: center; 
+    gap: 4px;
+    padding: 0;
+    margin: 0;
+}
+
 #quizHeader{
   display: flex;
   flex-direction: column;
@@ -537,7 +553,7 @@ h1 {
 
 #leadStep {
   position: relative;
-  display: flex;
+  display: none;
   padding: 0 1.5rem;
   max-width: 376px;
   margin: 0 auto;
@@ -575,7 +591,7 @@ input[type="text"], input[type="email"] {
   background: var(--Gulabi-400);
 }
 
-#skipLead {
+/* #skipLead {
   display: inline-block;
   color: var(--Text-Body-Black);
   background: none;
@@ -588,9 +604,9 @@ input[type="text"], input[type="email"] {
 
 #skipLead:hover {
   color: var(--Gulabi-500);
-}
+} */
 
-#errorMsg {
+.errorMsg {
   color: var(--Gulabi-500);
   background:var(--Gulabi-100);
   border: 1px solid var(--Gulabi-300);
@@ -602,7 +618,7 @@ input[type="text"], input[type="email"] {
 #result {
   display: none;
   margin-top: 24px;
-  background: #fff0f7;
+  background: var(--Option-Label-Fill);
   border: 1px solid #ffd6e7;
   border-radius: 0.5rem;
   padding: 24px;
