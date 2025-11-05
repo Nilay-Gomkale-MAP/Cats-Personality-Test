@@ -7,6 +7,8 @@ NOTE: REMOVE INTRODUCTION WHEN GOING TO PRODUCTION
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- Mobile viewport for responsive scaling -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Please add the Google Tracking Tags and all the usual attachments -->
         <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
         <link rel="stylesheet" href="style.css">
@@ -25,14 +27,14 @@ NOTE: REMOVE INTRODUCTION WHEN GOING TO PRODUCTION
     <body>
         <!--Page Logo -->
         <div id="logoContainer">
-            <a href="https://map-india.org/" target="_blank" tabindex="0"><image src="Map-logo-black.svg" alt="MAP Logo"></a>
+            <a href="https://map-india.org/" target="_blank" tabindex="0"><img src="Map-logo-black.svg" alt="MAP Logo"></a>
         </div>
 
         <!-- Hero Section - Uses between one of two images depending on screen size and orientation -->
         <div id="heroSection">
             <dotlottie-wc
+                class="hero-lottie"
                 src="https://lottie.host/8e09eb74-3e5e-470d-b602-90b4c5f4d1d2/ZN0YJXVCrQ.lottie"
-                style="width: 300px;height: 300px"
                 autoplay loop></dotlottie-wc>
         </div>
 

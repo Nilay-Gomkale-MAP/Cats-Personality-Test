@@ -7,7 +7,7 @@
 */
 
 :root {
-    size: 16px;
+    font-size: 16px;
     color: #ffffff;
     font-family: 'Source Sans 3', sans-serif;
     margin: 0;
@@ -185,4 +185,17 @@ p {
         'wght' 400,
         'GRAD' 0,
         'opsz' 24
+}
+
+/* Responsive Lottie used in the hero - replaces the inline fixed sizing */
+.hero-lottie {
+    display: block;
+    width: 100%;
+    height: auto; /* let the element keep its intrinsic aspect ratio */
+}
+
+/* Small safety override for any dotlottie-wc tags without the class */
+dotlottie-wc {
+    max-width: 100%;
+    height: auto;
 }
