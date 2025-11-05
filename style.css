@@ -12,7 +12,8 @@
     font-family: 'Source Sans 3', sans-serif;
     margin: 0;
     --primary-color: #F2CC9D;
-    --sharbati-300: #FF5C82;
+    --Gulabi-200: #FF99CF;
+    --Gulabi-300: #FF5C82;
     --Text-Body-White: #FFFFFF;
     --Text-Body-Black: #1F1F1F;
 }
@@ -22,6 +23,14 @@ body {
     background: var(--primary-color);
 }
 
+h2{
+    font-family: "Bree Serif", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--Text-Body-Black);
+    margin: 0px;
+}
+
 p {
     font-size: 1rem;
     line-height: 1.5rem;
@@ -29,6 +38,53 @@ p {
     font-weight: 400;
     color: var(--Text-Body-Black);
     margin: 0px;
+}
+
+#startButton {
+    display: flex;
+    position: relative;
+    width: 248px;
+    padding: 16px 36px;
+    align-items: center;
+    gap: 10px;
+    border-radius: var(--rounded-full, 9999px);
+    border: 4px solid var(--Background-Primary, #000);
+    background: var(--Gulabi-200, #FF99CF);
+    font-family: var(--body, "Source Sans 3");
+    font-size: 20px;
+    font-style: normal;
+    font-weight: var(--font-bold, 700);
+    line-height: 28px; /* 140% */
+}
+
+#startButton:active {
+    background: var(--Gulabi-400, #FF1F96);
+}
+
+#pawPrint{
+    width: 85px;
+    height: 85px;   
+    position: absolute;
+    right: -17px;
+    top: -25.011px;
+}
+
+#pawPrint path {
+    fill: #FF99CF;
+}
+
+#pawPrint .blackPath {
+    fill: black;
+}
+
+/* When the start button is pressed, change the paw color to match the active CTA */
+#startButton:active #pawPrint path {
+    fill: var(--Gulabi-400, #FF1F96);
+}
+
+/* Optionally invert the black detail for contrast while active */
+#startButton:active #pawPrint .blackPath {
+    fill: black;
 }
 
 /* TO BE MODIFIED: This is where the hero section creative would go */
@@ -120,9 +176,41 @@ p {
     /* background: #000000; */
 }
 
-.hashTags {
-    font-family: 'manofa', sans-serif;
+.instructionSet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.instructionSet p{
+    font-family: 'source sans 3', sans-serif;
     font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 1.5rem;
+    color: var(--Text-Body-Black);
+    margin: 0px;
+}
+
+.instructionCat{
+    position: relative;
+    width: 64px;
+    height: auto;
+}
+
+.instructionCat p{
+    position: absolute; 
+    left: 28px; 
+    bottom: 8.23px;
+    font-family: 'bree serif', serif; 
+    font-weight: 400;
+    color: white;
+}
+
+.hashTags {
+    font-family: 'bree serif', serif;
+    font-weight: 400;
     font-size: 1.125rem;
     line-height: 1.75rem;
     margin: 0px;
