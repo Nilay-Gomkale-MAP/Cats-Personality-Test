@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Which Cat Are You?</title>
-    <link rel="stylesheet" href="/style2.css">
+    <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/footer.min.css"> <!-- Downloaded from MAP-India Website -->
 
     <!-- Google Fonts import for Bree Serif & Source Sans 3-->
@@ -44,14 +44,21 @@
         <div id="questionsContainer"></div>
 
         <!-- <div id="leadStep">
-          <strong>Almost done!</strong>
+          <h2>Almost done!</h2>
+          <div id="errorMsg"></div>
           <p>Would you like to receive your cat type by email?</p>
           <input type="text" id="fname" placeholder="First Name (optional)">
           <input type="email" id="email" placeholder="Email">
-          <button type="button" id="submitLead">Submit</button>
+          <button type="button" class="submitButton" id="submitLead">Submit</button>
           <button id="skipLead">Skip to results</button>
-          <div id="errorMsg"></div>
         </div> -->
+
+        <div id="resultStep">
+          <h2>Almost done!</h2>
+          <div id="errorMsg"></div>
+          <p>Click Continue to get your results<br/>[Can insert reward reminder here]</p>
+          <button type="button" class="submitButton" id="getResult">Get Results!</button>
+        </div>
       </form>
 
       <div id="result"></div>

@@ -128,6 +128,12 @@ const quizData = [
     resultBox.scrollIntoView({ behavior: "smooth" });
   }
 
+  document.getElementById('getResult').addEventListener('click', () => {
+    if (!validateQuiz()) return;
+    errorMsg.style.display = "none";
+    showResult();
+  });
+
   document.getElementById('submitLead').addEventListener('click', () => {
     if (!validateQuiz()) return;
     const email = document.getElementById('email').value.trim();
