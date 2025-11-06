@@ -22,6 +22,7 @@
   --Text-Body-Black: #1F1F1F;
   --Option-Label-Fill: #FFF7ED;
   --Option-Label-Border: #FFDAAD;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -32,6 +33,7 @@ body {
 .mainContainer{
     max-width: 700px;
     margin: 0px auto;
+    padding: 24px 16px;
 }
 
 h2{
@@ -147,59 +149,6 @@ p {
     display: block;
     object-fit: cover; /* use 'contain' if you prefer no cropping */
 }
-
-/* Mobile: force a square hero and make the lottie canvas fill it.
-   This prevents the component's internal canvas from choosing a 2:1 size. */
-/* @media screen and (max-width: 767px) {
-    #heroSection {
-        ensure hero area is square on small screens
-        aspect-ratio: 1/1;
-        width: 100%;
-    }
-
-    .hero-lottie {
-        fill the hero area so the animation appears end-to-end
-        width: 100%;
-        height: 100%;
-        display: block;
-    }
-
-    the dotlottie webcomponent renders a <canvas> internally; force it to fill
-       the host so the visual aspect matches the square container. Use !important
-       because the component may set inline sizes at runtime.
-    .hero-lottie canvas,
-    dotlottie-wc canvas {
-        width: 100% !important;
-        height: 100% !important;
-        display: block;
-        object-fit: contain;
-    }
-} */
-
-/* @media screen and (min-width: 768px){
-    #heroSection {
-        aspect-ratio: 2/1;
-        background: url(heroSection-iPad-alt.png);
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-}
-@media screen and (min-width: 1024px) and (orientation: landscape){
-    #heroSection {
-        aspect-ratio: 3/1;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-}
-@media screen and (min-width: 1024px) and (orientation: portrait){
-    #heroSection {
-        aspect-ratio: 2/1;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-} */
 
 /* Main CTA Button styles */
 #startButton {
@@ -340,10 +289,9 @@ p {
     font-weight: 600;
     font-family: 'source sans 3', sans-serif;
 }
-#learnMore:active{
-    background: #000000;
-    color: var(--accent-color);
-    border: 1px solid var(--accent-color);
+#learnMore:active, #learnMore:hover {
+    background: var(--Gulabi-200);
+    border: 1px solid var(--Gulabi-300);
 }
 
 /* TEXTURE BACKGROUND */
@@ -404,16 +352,6 @@ p {
 }
 
 /* PORT OVER FROM SUB-SHEET */
-h1 {
-  font-family: "Bree Serif", serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 2.25rem;
-  color: var(--Text-Body-Black);
-  text-align: center;
-  margin: 0px;
-}
-
 #navBack{
   font-family: 'Source Sans 3', sans-serif;
   font-weight: 600;
@@ -445,19 +383,30 @@ h1 {
     margin: 0;
 }
 
+h1 {
+  font-family: "Bree Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  color: var(--Text-Body-Black);
+  text-align: center;
+  margin: 0px;
+}
+
 #quizHeader{
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 12px;
   margin: 40px 0;
 }
 
 #quizHeader p{
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: 600;
   line-height: 1.5rem;
-  color: var(--Text-Body-Black);
+  color: var(--);
 }
 
 .sittingCat{
@@ -491,7 +440,7 @@ h1 {
   color: var(--Text-Body-Black);
   font-style: normal;
   font-weight: 600;
-  line-height: 1.5rem;
+  line-height: 1.75rem;
   text-align: center;
 }
 
@@ -517,13 +466,13 @@ h1 {
   padding: 1rem;
 
   font-family: 'Source Sans 3', sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
   color: var(--Text-Body-Black);
   font-weight: 600;
   font-style: normal;
   text-align: center;
   cursor: pointer;
-  font-size: 1rem;
-  line-height: 1.5rem;
   transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
   user-select: none;
 
@@ -561,18 +510,18 @@ h1 {
   
   .questionBox strong {
     font-size: 1.25rem; /* Increase Question font size for bigger screens */
-    line-height: 1.5rem;
+    line-height: 1.75rem;
   }
 
   .optionsGrid label{
-    font-size: 1.125rem;
+    font-size: 1.25rem;
   }
 }
 
 /* optional image (hidden by default until used) */
 .question-image{
-    width: 15rem;
-    height: auto;
+    width: auto;
+    height: 15rem;
     object-fit: cover;
     /* border-radius: 4px; */
     margin-bottom: 8px;
@@ -608,6 +557,7 @@ h1 {
 }
 
 input[type="text"], input[type="email"] {
+    font-family: 'Source Sans 3', sans-serif;
   align-self: stretch;
   padding: 12px 24px;
   border-radius: var(--rounded-base, 0.25rem);
@@ -663,20 +613,19 @@ input[type="text"], input[type="email"] {
   background: var(--Option-Label-Fill);
   border: 1px solid #ffd6e7;
   border-radius: 8px;
-  padding: 20px;
+  padding: 20px 16px;
   text-align: left;
   animation: fadeIn 0.5s ease forwards;
   max-width: 512px;
   margin-left: auto;
   margin-right: auto;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
 
 /* Result card layout */
 .result-title {
   font-family: "Bree Serif", serif;
   color: var(--Text-Body-Black);
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 400;
   font-style: normal;
   margin: 0;
@@ -700,10 +649,23 @@ input[type="text"], input[type="email"] {
 }
 
 .result-message {
-  margin: 16px 0 12px 0;
+  margin-top: 24px;
   color: var(--Text-Body-Black);
   font-family: 'Source Sans 3', sans-serif;
-  line-height: 1.5rem;
+  text-align: center;
+}
+
+.result-message p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    margin-top: 8px;
+}
+
+.result-message strong {
+  font-weight: 600;
+  font-size: 1.125rem;
 }
 
 .share-promo {
@@ -711,7 +673,7 @@ input[type="text"], input[type="email"] {
     text-align: center;
     font-weight: 600;
     margin-top: 24px;
-    font-size: 1.1rem;
+    font-size: 1.25rem;
 }
 
 .shareRow {
@@ -732,7 +694,33 @@ input[type="text"], input[type="email"] {
   justify-content: center;
   color: white;
   text-decoration: none;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+}
+
+.share-button svg{
+    width: 28px;
+    height: 28px;
+}
+
+.share-button:active, .share-button:hover{
+    background: white;
+    /* border: 2px solid var(--Text-Body-Black); */
+    box-shadow: 0 0 0 2px var(--Text-Body-Black);
+}
+
+.WA-share-btn, .X-share-btn, .FB-share-btn {
+    fill: white;
+}
+
+.share-button:hover .WA-share-btn, .share-button:active .WA-share-btn {
+    fill: #25D366;
+}
+
+.share-button:hover .X-share-btn, .share-button:active .X-share-btn {
+    fill: black;
+}
+
+.share-button:hover .FB-share-btn, .share-button:active .FB-share-btn {
+    fill: #0866FF;
 }
 
 .share-button .label {
