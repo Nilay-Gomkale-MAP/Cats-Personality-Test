@@ -10,7 +10,7 @@ const quizData = [
     ]
   },
   {
-    q: "What small everyday item featuring sketches of cats, helped bring art to ordinary people?",
+    q: "What small everyday items featuring cats helped bring art to the masses?",
     image: "",
     options: [
       { text: "Perfumes", correct: false },
@@ -30,7 +30,7 @@ const quizData = [
     ]
   },
   {
-    q: "Who is the artist?",
+    q: "This work featuring cats and women is by a modernist painter known for her canvases that blend personal memory with social commentary. Who is she?",
     image: "../artwork-images/Q4-img.png",
     options: [
       { text: "Meera Mukherjee", correct: false },
@@ -40,7 +40,7 @@ const quizData = [
     ]
   },
   {
-    q: "This artwork is by Anand Singh Shyam, a renowned folk artist from Central India. Which art form is he famous for?",
+    q: "This artwork is by Anand Singh Shyam from Madhya Pradesh.. Which art form is he known for?",
     image: "../artwork-images/Q5-img.png",
     options: [
       { text: "Madhubani", correct: false },
@@ -50,27 +50,27 @@ const quizData = [
     ]
   },
   {
-    q: "This bronze lion was made using Dhokra casting, an ancient lost-wax technique. Dhokra artisans are mostly found in which Indian states?",
+    q: "This bronze lion is a Dhokra sculpture, created using an ancient lost-wax technique. Where was this created?",
     image: "../artwork-images/Q6-img.jpg",
     options: [
-      { text: "Punjab, Haryana, Rajasthan", correct: false },
-      { text: "Kerala, Tamil Nadu, Karnataka", correct: false },
-      { text: "Chhattisgarh, West Bengal, Odisha", correct: true },
-      { text: "Gujarat, Maharashtra, Goa", correct: false }
+      { text: "Punjab", correct: false },
+      { text: "Kerala", correct: false },
+      { text: "Chhattisgarh", correct: true },
+      { text: "Gujarat", correct: false }
     ]
   },
   {
     q: "Which Indian goddess is usually depicted along with a big cat?",
     image: "",
     options: [
-      { text: "Saraswathi", correct: false },
+      { text: "Saraswati", correct: false },
       { text: "Ganga", correct: false },
       { text: "Bramhini", correct: false },
       { text: "Durga", correct: true }
     ]
   },
   {
-    q: "Big cats embody strength, courage, and royalty. In \"The Jungle Book,\" the friendly guardian Bagheera is a: ",
+    q: "Big cats embody strength, courage, and royalty. In \"The Jungle Book,\" the friendly guardian Bagheera is a:",
     image: "",
     options: [
       { text: "Tiger", correct: false },
@@ -80,13 +80,13 @@ const quizData = [
     ]
   },
   {
-    q: "Below is a silver gelatin print of a black cat wearing a bowtie, a photographic process using light-sensitive paper and chemicals. Which year did this method originate?",
+    q: "The postcard below is a silver gelatin print, a photographic process using light-sensitive paper and chemicals. In which time period was the silver gelatin process first developed?",
     image: "../artwork-images/Q9-img.png",
     options: [
-      { text: "1870", correct: true },
-      { text: "1990", correct: false },
-      { text: "1650", correct: false },
-      { text: "2005", correct: false }
+      { text: "1870s", correct: true },
+      { text: "1990s", correct: false },
+      { text: "1650s", correct: false },
+      { text: "2000s", correct: false }
     ]
   },
   {
@@ -94,8 +94,8 @@ const quizData = [
     image: "",
     options: [
       { text: "Chandana Hore", correct: false },
-      { text: "B.N. Goswamy", correct: true },
-      { text: "Kavita Singh", correct: false },
+      { text: "Prof. B.N. Goswamy ", correct: true },
+      { text: "Dr. Kavita Singh", correct: false },
       { text: "KG Subramanian", correct: false }
     ]
   }

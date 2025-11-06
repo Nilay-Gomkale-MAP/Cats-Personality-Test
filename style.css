@@ -484,7 +484,7 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 1rem;
   padding: 0;
 }
 
@@ -500,31 +500,12 @@ h1 {
 /* --- 2x2 grid layout for options --- */
 .optionsGrid {
   display: grid;
-  width: 20rem;
+  width: 22rem;
   row-gap: 0.75rem;
   column-gap: 0.75rem;
-  aspect-ratio: 1.125/1;
+  aspect-ratio: 1.33/1;
   grid-template-rows: repeat(2, minmax(0, 1fr));
   grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-@media screen and (min-width: 768px) {
-  .optionsGrid {
-    width: 30rem;
-    aspect-ratio: 1.5/1;
-  }
-
-  #questionsContainer {
-    gap: 4rem;
-  }
-
-  .questionBox {
-    gap: 16px;
-  }
-  
-  .questionBox strong {
-    font-size: 1.25rem;
-  }
 }
 
 .optionsGrid input[type="radio"] {
@@ -566,12 +547,36 @@ h1 {
   transform: scale(1.02);
 }
 
+@media screen and (min-width: 768px) {
+  .optionsGrid {
+    width: 32rem;
+    aspect-ratio: 1.75/1;
+  }
+
+  #questionsContainer {
+    gap: 4rem;
+  }
+
+  .questionBox {
+    gap: 1.5rem;
+  }
+  
+  .questionBox strong {
+    font-size: 1.25rem; /* Increase Question font size for bigger screens */
+    line-height: 1.5rem;
+  }
+
+  .optionsGrid label{
+    font-size: 1.125rem;
+  }
+}
+
 /* optional image (hidden by default until used) */
 .question-image{
     width: 15rem;
     height: auto;
     object-fit: cover;
-    border-radius: 4px;
+    /* border-radius: 4px; */
     margin-bottom: 8px;
 }
 
