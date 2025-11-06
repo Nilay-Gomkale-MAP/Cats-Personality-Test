@@ -385,6 +385,26 @@ p {
         'opsz' 24
 }
 
+/* Progress bar at bottom (kept top-level to avoid nesting issues) */
+#progressBar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 8px;
+  background: rgba(0,0,0,0.06);
+  z-index: 9999;
+}
+#progressFill {
+  height: 100%;
+  width: 0%;
+  background: var(--Gulabi-500);
+  transition: width 280ms ease;
+  max-width: 512px; /* keep fill aligned with hero width */
+  margin: 0 auto;
+  border-radius: 4px 4px 0 0;
+}
+
 /* PORT OVER FROM SUB-SHEET */
 h1 {
   font-family: "Bree Serif", serif;
