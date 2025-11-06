@@ -41,7 +41,7 @@ const quizData = [
   },
   {
     q: "This artwork is by Anand Singh Shyam, a renowned folk artist from Central India. Which art form is he famous for?",
-    image: "",
+    image: "../artwork-images/Q5-img.png",
     options: [
       { text: "Madhubani", correct: false },
       { text: "Gond", correct: true },
@@ -51,7 +51,7 @@ const quizData = [
   },
   {
     q: "This bronze lion was made using Dhokra casting, an ancient lost-wax technique. Dhokra artisans are mostly found in which Indian states?",
-    image: "",
+    image: "../artwork-images/Q6-img.jpg",
     options: [
       { text: "Punjab, Haryana, Rajasthan", correct: false },
       { text: "Kerala, Tamil Nadu, Karnataka", correct: false },
@@ -81,7 +81,7 @@ const quizData = [
   },
   {
     q: "Below is a silver gelatin print of a black cat wearing a bowtie, a photographic process using light-sensitive paper and chemicals. Which year did this method originate?",
-    image: "",
+    image: "../artwork-images/Q9-img.png",
     options: [
       { text: "1870", correct: true },
       { text: "1990", correct: false },

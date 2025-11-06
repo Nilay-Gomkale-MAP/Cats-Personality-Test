@@ -568,10 +568,10 @@ h1 {
 
 /* optional image (hidden by default until used) */
 .question-image{
-    width: 100%;
+    width: 15rem;
     height: auto;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 4px;
     margin-bottom: 8px;
 }
 
