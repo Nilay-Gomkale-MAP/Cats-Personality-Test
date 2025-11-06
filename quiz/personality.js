@@ -31,7 +31,7 @@ const quizData = [
   },
   {
     q: "Who is the artist?",
-    image: "",
+    image: "../artwork-images/Q4-img.png",
     options: [
       { text: "Meera Mukherjee", correct: false },
       { text: "Bhuri Bai", correct: false },
@@ -117,6 +117,7 @@ quizData.forEach((qObj, i) => {
   qDiv.classList.add("questionBox");
   // ${i + 1}. ${qObj.q}
   qDiv.innerHTML = `<strong>${qObj.q}</strong>
+    ${qObj.image ? `<img class="question-image" src="${qObj.image}" alt="${qObj.q}" />` : ''}
     <div class="optionsGrid">
       ${qObj.options.map((opt, idx) => `
         <input type="radio" id="q${i+1}_${idx}" name="q${i+1}" data-correct="${opt.correct ? '1' : '0'}">
@@ -124,8 +125,7 @@ quizData.forEach((qObj, i) => {
           ${opt.text}
         </label>
       `).join('')}
-    </div>
-    ${qObj.image ? `<div class="question-image"><img src="${qObj.image}" alt="" /></div>` : ''}`;
+    </div>`;
   questionsContainer.appendChild(qDiv);
 });
 
