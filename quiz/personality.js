@@ -1,6 +1,6 @@
 const quizData = [
   {
-    q: "Known for their paintings of cats inspired by Kalighat Patua style, this prolific artist from Bengali painted over 20,000 works over his lifetime, that’s nearly 10 paintings every day! What is their name?",
+    q: "This prolific Bengali artist, inspired by Kalighat Patua style, painted over 20,000 artworks in their lifetime—nearly 10 daily! What is their name?",
     options: [
       { text: "Jogen Chowdhury", value: "lazy", img: "" },
       { text: "Jamini Roy", value: "thief", img: "" },
@@ -45,7 +45,7 @@ const quizData = [
     ]
   },
   {
-    q: "This bronze lion was made using an ancient metal technique called Dhokra casting, where wax is melted away during the process. Dhokra artisans are mostly found in which Indian states?",
+    q: "This bronze lion was made using Dhokra casting, an ancient lost-wax technique. Dhokra artisans are mostly found in which Indian states?",
     options: [
       { text: "Punjab, Haryana, Rajasthan", value: "lazy", img: "" },
       { text: "Kerala, Tamil Nadu, Karnataka", value: "thief", img: "" },
@@ -72,7 +72,7 @@ const quizData = [
     ]
   },
   {
-    q: "Below is a silver gelatin print of a black cat wearing a bowtie. This process uses special light-sensitive paper and chemicals to create the final image. Which year did this method of photographic printing originate?",
+    q: "Below is a silver gelatin print of a black cat wearing a bowtie, a photographic process using light-sensitive paper and chemicals. Which year did this method originate?",
     options: [
       { text: "1870", value: "lazy", img: "" },
       { text: "1990", value: "thief", img: "" },
