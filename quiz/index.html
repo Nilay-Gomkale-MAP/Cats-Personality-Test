@@ -18,13 +18,13 @@
   </head>
 
   <body>
-    <div class="mainContainer">
+    <div class="mainContainer" style="padding: 24px 16px;"> <!-- Padding only needed for this page -->
       <button id="navBack" onclick="location.href='/index.html'">
-        <span class="material-symbols-outlined" style="font-size: 1.2rem;">chevron_backward</span>Return to Homepage 
+        <span class="material-symbols-outlined">chevron_backward</span><p>Return to Homepage</p>
       </button>
 
       <button id="restartQuiz">
-        <span class="material-symbols-outlined" style="font-size: 1.2rem;">refresh</span>Restart Quiz 
+        <span class="material-symbols-outlined" style="font-size: 1.2rem;">refresh</span><p>Restart Quiz</p>
       </button>
 
       <div id="quizHeader">
@@ -52,8 +52,8 @@
           <!-- <h2>Almost done!</h2> -->
           <div class="errorMsg"></div>
           <!-- <p>Click Continue to get your results<br/>[Can insert reward reminder here]</p> -->
-          <p>Click Continue to get your results</p> <!-- Stylize this -->
-          <button type="button" class="submitButton" id="getResult">Submit to get you Results!</button>
+          <p>Ready to see which cat you are?</p>
+          <button type="button" class="submitButton" id="getResult">Submit to get your Results!</button>
         </div>
       </form>
 

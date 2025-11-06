@@ -33,7 +33,7 @@ body {
 .mainContainer{
     max-width: 700px;
     margin: 0px auto;
-    padding: 24px 16px;
+    /* padding: 24px 16px; */
 }
 
 h2{
@@ -352,13 +352,13 @@ p {
 }
 
 /* PORT OVER FROM SUB-SHEET */
-#navBack{
+#navBack, #navBack p{
   font-family: 'Source Sans 3', sans-serif;
   font-weight: 600;
+  font-size: 1.125rem;
   background: none; 
   border: none; 
   cursor: pointer; 
-  font-size: 1rem; 
   color: var(--Text-Body-Black); 
   display: flex; 
   align-items: center; 
@@ -367,20 +367,28 @@ p {
   margin: 0;
 }
 
-#restartQuiz{
+#restartQuiz, #restartQuiz p{
     display: none;
     font-family: 'Source Sans 3', sans-serif;
     font-weight: 600;
     background: none; 
     border: none; 
     cursor: pointer; 
-    font-size: 1rem; 
+    font-size: 1.25rem; 
     color: var(--Text-Body-Black); 
     /* display: flex;  */
     align-items: center; 
     gap: 4px;
     padding: 0;
     margin: 0;
+}
+
+#restartQuiz p{
+    display: block;
+}
+
+#navBack:active p, #navBack:hover p, #restartQuiz:active p, #restartQuiz:hover p{
+    text-decoration: underline;
 }
 
 h1 {
@@ -406,7 +414,7 @@ h1 {
   font-size: 1.125rem;
   font-weight: 600;
   line-height: 1.5rem;
-  color: var(--);
+  color: var(--Text-Body-Black);
 }
 
 .sittingCat{
@@ -420,7 +428,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 2.5rem;
+  /* gap: 1.25rem; */
   align-items: center;
   justify-items: center;
 }
@@ -432,7 +440,8 @@ h1 {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  padding: 0;
+  padding: 1.25rem 0;
+  border-radius: 6px;
 }
 
 .questionBox strong {
@@ -446,6 +455,7 @@ h1 {
 
 /* --- 2x2 grid layout for options --- */
 .optionsGrid {
+  /* margin-top: 1rem; */
   display: grid;
   width: 22rem;
   row-gap: 0.75rem;
@@ -501,7 +511,7 @@ h1 {
   }
 
   #questionsContainer {
-    gap: 4rem;
+    gap: 3rem;
   }
 
   .questionBox {
@@ -523,7 +533,6 @@ h1 {
     width: auto;
     height: 15rem;
     object-fit: cover;
-    /* border-radius: 4px; */
     margin-bottom: 8px;
 }
 
@@ -532,14 +541,21 @@ h1 {
 #resultStep {
   position: relative;
   display: flex;
-  /* padding: 0 1.5rem; */
+  padding: 1.25rem 0;
+  border-radius: 6px;
   margin: 0 auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0.75rem;
   align-self: stretch;
-  margin-top: 24px;
+}
+
+#resultStep p{
+    font-family: "Bree Serif", serif;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-bottom: 12px;
 }
 
 #leadStep {
@@ -573,8 +589,8 @@ input[type="text"], input[type="email"] {
   font-weight: 600;
   min-width: 144px;
   border: none;
-  border-radius: 2px;
-  padding: 12px 20px;
+  border-radius: 4px;
+  padding: 16px 20px;
   cursor: pointer;
   transition: background 0.3s;
 }
@@ -727,14 +743,34 @@ input[type="text"], input[type="email"] {
   display: none; /* hidden label for visual-only icons; aria-label on anchors provides accessibility */
 }
 
-@media screen and (min-width: 768px) {
-  .result-message { font-size: 1rem; }
-  .share-button { width: 72px; height:72px; }
-}
-
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 /* PORT OVER END */
+
+/* Subtle highlight animation used when auto-scrolling to a question/result */
+.questionBox.highlight {
+  animation: highlightFlash 760ms ease forwards;
+}
+
+@keyframes highlightFlash {
+  0% {
+    box-shadow: 0 0 0 rgba(208, 0, 111, 0);
+    background-color: rgba(208,0,111,0.06);
+  }
+  40% {
+    box-shadow: 0 8px 24px rgba(208,0,111,0.12);
+    background-color: rgba(255,230,240,0.7);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(208,0,111,0);
+    background-color: transparent;
+  }
+}
+
+/* Highlight for the result step as well */
+#resultStep.highlight {
+  animation: highlightFlash 760ms ease forwards;
+}

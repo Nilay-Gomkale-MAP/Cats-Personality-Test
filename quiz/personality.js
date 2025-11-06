@@ -134,9 +134,26 @@ const questionsContainer = document.getElementById("questionsContainer");
 // Render questions; attach data-correct attribute to inputs for scoring
 quizData.forEach((qObj, i) => {
   const qDiv = document.createElement("div");
+  qDiv.id = `question${i+1}`;
   qDiv.classList.add("questionBox");
   // ${i + 1}. ${qObj.q}
-  qDiv.innerHTML = `<strong>${qObj.q}</strong>
+  // <strong>Question ${i+1}</strong>
+  qDiv.innerHTML = `
+    <div class="instructionCat">
+      <p>${i+1}</p>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 58" fill="none">
+          <path d="M36.6193 57.3171C30.5844 58.2576 24.7847 57.9637 18.5784 49.4354C18.4902 49.3179 18.4168 49.1905 18.3335 49.068C14.4931 43.1115 16.0116 32.8149 21.2138 36.9149C21.9289 37.4782 20.5721 25.1488 15.5218 20.0887C15.5218 20.0887 10.8585 23.0865 6.45969 18.8738C2.06091 14.666 5.46042 9.21893 5.46042 9.21893L4.42196 2.39046L8.77175 6.51497C8.77175 6.51497 10.7899 5.58426 13.2048 5.7851L17.2754 0L18.6127 6.77459C18.6127 6.77459 21.0766 10.8942 23.5797 12.1482C26.0828 13.4022 34.6697 16.4932 42.3994 35.1809C42.3994 35.1809 45.5002 30.5224 49.1103 33.6133C49.1103 33.6133 54.7729 54.4955 36.6242 57.322L36.6193 57.3171Z" fill="black"/>
+          <path d="M12.8783 14.219C13.6809 14.1825 14.2937 13.3182 14.2469 12.2886C14.2002 11.2589 13.5116 10.4537 12.709 10.4902C11.9063 10.5266 11.2935 11.3909 11.3403 12.4206C11.387 13.4502 12.0756 14.2554 12.8783 14.219Z" fill="white"/>
+          <path d="M7.43845 14.6823C8.24111 14.6459 8.85388 13.7816 8.80713 12.7519C8.76037 11.7223 8.07179 10.9171 7.26913 10.9535C6.46648 10.99 5.8537 11.8543 5.90046 12.8839C5.94721 13.9136 6.6358 14.7188 7.43845 14.6823Z" fill="white"/>
+          <path d="M7.81522 13.5893C8.27195 13.5686 8.61524 12.958 8.58198 12.2256C8.54872 11.4932 8.15151 10.9163 7.69478 10.9371C7.23805 10.9578 6.89476 11.5683 6.92802 12.3007C6.96127 13.0331 7.35849 13.61 7.81522 13.5893Z" fill="black"/>
+          <path d="M13.455 13.1088C13.9117 13.0881 14.255 12.4775 14.2218 11.7452C14.1885 11.0128 13.7913 10.4358 13.3346 10.4566C12.8778 10.4773 12.5345 11.0879 12.5678 11.8203C12.601 12.5527 12.9983 13.1296 13.455 13.1088Z" fill="black"/>
+          <path d="M0.0133057 17.3022L6.09225 17.0229" stroke="black" stroke-width="0.58" stroke-miterlimit="10"/>
+          <path d="M2.23242 20.899L7.19452 17.9746" stroke="black" stroke-width="0.58" stroke-miterlimit="10"/>
+          <path d="M5.4458 23.7373L8.36036 18.3833" stroke="black" stroke-width="0.58" stroke-miterlimit="10"/>
+          <path d="M38.3588 46.7252C38.3588 46.7252 45.5938 55.0918 53.8134 52.2703C62.0329 49.4487 63.2036 40.8813 55.9001 35.2481C50.262 30.9031 47.1025 20.0677 53.0982 15.5758C57.9231 11.9607 59.5886 17.6087 56.7867 20.0677C53.9848 22.5316 54.5873 28.0767 59.5445 32.3188C67.3477 39.0003 64.8103 54.5383 52.8827 55.9147C40.955 57.2961 35.3904 50.3158 35.3904 50.3158L38.3637 46.7203L38.3588 46.7252Z" fill="black"/>
+      </svg>
+    </div>
+    <strong>${qObj.q}</strong>
     ${qObj.image ? `<img class="question-image" src="${qObj.image}" alt="${qObj.q}" />` : ''}
     <div class="optionsGrid">
       ${qObj.options.map((opt, idx) => `
@@ -145,7 +162,8 @@ quizData.forEach((qObj, i) => {
           ${opt.text}
         </label>
       `).join('')}
-    </div>`;
+    </div>
+  `;
   questionsContainer.appendChild(qDiv);
 });
 
@@ -163,8 +181,42 @@ function updateProgress(){
 
 // Attach change listeners to update progress as user answers
 document.addEventListener('change', (e) => {
-  if(e.target && e.target.matches('input[type=radio]')){
+  if (e.target && e.target.matches('input[type=radio]')) {
     updateProgress();
+
+    // Auto-scroll to the next question after selection.
+    // Find the current question container and the next one in DOM order.
+    try {
+      const currentBox = e.target.closest('.questionBox');
+      if (currentBox) {
+        const boxes = Array.from(document.querySelectorAll('.questionBox'));
+        const idx = boxes.indexOf(currentBox);
+        const next = boxes[idx + 1];
+        if (next) {
+          // small delay so the UI registers the checked state before moving
+          setTimeout(() => {
+            next.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // add highlight class for a subtle visual cue
+            next.classList.add('highlight');
+            setTimeout(() => next.classList.remove('highlight'), 800);
+            // move focus to the first radio in the next question for keyboard users
+            const firstInput = next.querySelector('input[type=radio]');
+            if (firstInput) firstInput.focus({ preventScroll: true });
+          }, 120);
+        } else {
+          // If this was the last question, scroll to the result step area
+          const resultStep = document.getElementById('resultStep');
+          if (resultStep) setTimeout(() => {
+            resultStep.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            resultStep.classList.add('highlight');
+            setTimeout(() => resultStep.classList.remove('highlight'), 2000);
+          }, 120);
+        }
+      }
+    } catch (err) {
+      // Don't let scrolling errors break the quiz
+      console.warn('Auto-scroll failed:', err);
+    }
   }
 });
 
@@ -230,7 +282,7 @@ function showResult() {
       <p><strong>You scored ${score} out of ${quizData.length} points!</strong></p>
       <p>${desc}</p>
     </div>
-    <p class="share-promo">Share this Quiz with your friends and family to test their knowledge</p>
+    <p class="share-promo">Share this Quiz with your friends and family to<br/>test their knowledge</p>
     <div class="shareRow">
       <a class="share-button" href="${whatsapp}" target="_blank" rel="noopener" aria-label="Share on WhatsApp">
         <span class="label">WhatsApp</span>
@@ -277,7 +329,18 @@ function showResult() {
 document.getElementById('getResult').addEventListener('click', () => {
   if (!validateQuiz()) return;
   errorMsg.style.display = "none";
-  showResult();
+  // Scroll to top when user submits, then show results.
+  // We call showResult after a short delay so the smooth scroll starts first.
+  try {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch (e) {
+    // ignore (older browsers)
+  }
+  setTimeout(() => {
+    showResult();
+    // ensure viewport stays at top after results render
+    setTimeout(() => { try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) {} }, 220);
+  }, 360);
 });
 
 document.getElementById('restartQuiz').addEventListener('click', () => {
