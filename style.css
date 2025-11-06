@@ -652,6 +652,14 @@ input[type="text"], input[type="email"] {
   font-size: 1.5rem;
 }
 
+#result h4{
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: var(--Text-Body-Black);
+    margin-top: 12px;
+}
+
 #result p {
   margin-top: 12px;
   color: var(--Text-Body-Black);
