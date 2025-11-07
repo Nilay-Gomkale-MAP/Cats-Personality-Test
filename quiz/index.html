@@ -189,9 +189,21 @@
       <div id="leadStep">
           <h2>Sign up for our Newsletter</h2>
           <div class="errorMsg"></div>
-          <!-- <p>Would you like to receive your cat type by email?</p> -->
           <input type="text" id="fname" placeholder="First Name (optional)">
-          <input type="email" id="email" placeholder="Email">
+          <input type="email" id="email" placeholder="Email" aria-label="Email address">
+
+          <div class="consentRow">
+            <label for="gdprConsent">
+              <input type="checkbox" id="gdprConsent"> I consent to MAP storing my data as described in the <a href="https://map-india.org/terms-and-conditions/" target="_blank" rel="noopener">privacy policy</a> (required)
+            </label>
+          </div>
+
+          <div class="consentRow">
+            <label for="commsConsent">
+              <input type="checkbox" id="commsConsent"> I agree to receive occasional promotional emails about MAP events and offers (optional)
+            </label>
+          </div>
+
           <button type="button" class="submitButton" id="submitLead">Submit</button>
       </div>
     </div>

@@ -101,6 +101,17 @@ const quizData = [
   }
 ];
 
+// Replace this with your published Google Apps Script Web App URL
+// The web app should accept POST requests and write the fields to the sheet.
+const SHEET_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyMd0hO4fbsQGjqWK6_YF2z0YZt47nFlh5OaOmwFGg8Ho5EWavbH7S9nE1PIv6S3-oUvw/exec';
+
+function generateIdempotencyKey(){
+  try{
+    if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+  }catch(e){}
+  return 'id_' + Date.now() + '_' + Math.random().toString(36).slice(2,9);
+}
+
 // New descriptions for score-based archetypes
 const scoreArchetypes = [
   {
@@ -349,13 +360,67 @@ document.getElementById('restartQuiz').addEventListener('click', () => {
 
 document.getElementById('submitLead').addEventListener('click', () => {
   if (!validateQuiz()) return;
+
   const email = document.getElementById('email').value.trim();
+  const firstName = document.getElementById('fname').value.trim();
+  const gdpr = document.getElementById('gdprConsent')?.checked;
+  const comms = document.getElementById('commsConsent')?.checked;
+
+  // Validate required fields
   if (!email) {
-    errorMsg.innerText = "Please enter your email or skip.";
+    errorMsg.innerText = "Please enter your email to sign up.";
     errorMsg.style.display = "block";
     return;
   }
+  if (!gdpr) {
+    errorMsg.innerHTML = "You must consent to MAP storing your data as per the privacy policy to continue.";
+    errorMsg.style.display = "block";
+    return;
+  }
+
   errorMsg.style.display = "none";
+
+  // Build payload matching your sheet columns
+  const payload = {
+    timestamp: new Date().toISOString(),
+    first_name: firstName || '',
+    email: email,
+    comms_consent: comms ? '1' : '0',
+    gdpr_consent: gdpr ? '1' : '0',
+    source: (new URLSearchParams(location.search).get('utm_source')) || document.referrer || location.hostname,
+    user_agent: navigator.userAgent || '',
+    idempotency_key: generateIdempotencyKey()
+  };
+
+  const submitBtn = document.getElementById('submitLead');
+  submitBtn.disabled = true;
+  submitBtn.innerText = 'Sending...';
+
+  // POST to Google Apps Script Web App
+  fetch(SHEET_WEBAPP_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  }).then(async res => {
+    if (!res.ok) throw new Error('Network response was not ok');
+    // Optional: parse response if your Web App returns JSON
+    const text = await res.text().catch(() => '');
+    // Show a friendly confirmation and disable the lead UI
+    submitBtn.innerText = 'Submitted';
+    submitBtn.style.background = 'var(--Gulabi-400)';
+    // Optionally hide the lead form and show success message
+    const leadStepEl = document.getElementById('leadStep');
+    if (leadStepEl) {
+      leadStepEl.innerHTML = `<h3>Thanks — you're signed up!</h3><p style="margin-top:8px;">Check your inbox for a confirmation email. (If you don't see it, check your spam folder.)</p>`;
+    }
+    console.info('Lead submitted', payload, text);
+  }).catch(err => {
+    console.error('Lead submit failed', err);
+    errorMsg.innerText = 'There was a problem submitting your signup. Please try again.';
+    errorMsg.style.display = 'block';
+    submitBtn.disabled = false;
+    submitBtn.innerText = 'Submit';
+  });
 });
 
 // document.getElementById('skipLead').addEventListener('click', (e) => {
