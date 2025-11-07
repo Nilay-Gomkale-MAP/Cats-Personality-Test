@@ -1,80 +1,35 @@
-(async function() {
-  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbwvcAn55Spxz3BVEeDPE-QyB3iUdba0LGMf-ia-1pXr8xixIHnbZQ4Jnqw8RZ6DHK0xNA/exec'; // <-- replace with your Web App URL (paste exactly)
-  const submitBtn = document.getElementById('submitLead');
-  const emailInput = document.getElementById('email');
-  const fnameInput = document.getElementById('fname');
-  const gdprEl = document.getElementById('gdprConsent');
-  const commsEl = document.getElementById('commsConsent');
-  const errorBox = document.querySelector('#leadStep .errorMsg');
+document.getElementById('submitLead').addEventListener('click', async function() {
+  const endpoint = 'https://script.google.com/macros/s/AKfycbxc59TziX6bZE7QhuPSkN4vrvOKbOvfiJ12hHcXXSFvNnfF2XtP4QCh70f0N7PRH1lkFw/exec'; // Paste your copied URL here
 
-  function showMsg(text, isError = true) {
-    if (errorBox) {
-      errorBox.textContent = text;
-      errorBox.style.color = isError ? 'crimson' : 'green';
-    } else {
-      alert(text);
-    }
+  const fname = document.getElementById('fname').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const gdpr = document.getElementById('gdprConsent').checked;
+  const comms = document.getElementById('commsConsent').checked;
+
+  if (!email) {
+    alert('Please enter your email.');
+    return;
   }
 
-  submitBtn.addEventListener('click', async function () {
-    showMsg(''); // clear
-    const email = (emailInput.value || '').trim();
-    const firstName = (fnameInput.value || '').trim();
-    const gdpr = !!gdprEl.checked;
-    const comms = !!commsEl.checked;
+  if (!gdpr) {
+    alert('You must consent to data storage.');
+    return;
+  }
 
-    // Front-end validation
-    if (!email) {
-      showMsg('Please enter your email.');
-      return;
-    }
-    // Simple email regex; backend will validate again
-    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRe.test(email)) {
-      showMsg('Please enter a valid email address.');
-      return;
-    }
-    if (!gdpr) {
-      showMsg('Please accept the privacy policy to continue.');
-      return;
-    }
+  // Build data to send
+  const params = new URLSearchParams();
+  params.append('first_name', fname);
+  params.append('email', email);
+  params.append('gdpr_consent', gdpr);
+  params.append('comms_consent', comms);
+  params.append('source', 'meowseum-quiz');
+  params.append('ua', navigator.userAgent);
 
-    const payload = {
-      first_name: firstName,
-      email: email,
-      comms_consent: comms,
-      gdpr_consent: gdpr,
-      source: 'meowseum-quiz',
-      quiz_id: 'meowseum-v1'
-    };
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Submitting…';
-
-    try {
-      const resp = await fetch(ENDPOINT + '?ua=' + encodeURIComponent(navigator.userAgent), {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-
-      const json = await resp.json();
-      if (json.ok) {
-        const message = json.deduped ? 'You’re already registered — thanks!' : 'Thanks! Your details have been recorded.';
-        showMsg(message, false);
-        // Optionally clear form:
-        emailInput.value = '';
-        fnameInput.value = '';
-        gdprEl.checked = false;
-        commsEl.checked = false;
-      } else {
-        showMsg('Submission failed: ' + (json.error || 'Unknown error'));
-      }
-    } catch (err) {
-      showMsg('Network error — please try again.');
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Submit';
-    }
-  });
-})();
+  // Send data to Google Sheet
+  fetch(endpoint, {
+    method: 'POST',
+    body: params
+  })
+  .then(() => alert('Thanks! Your info was saved.'))
+  .catch(() => alert('Something went wrong — please try again.'));
+});
