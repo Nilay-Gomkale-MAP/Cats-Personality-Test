@@ -198,6 +198,50 @@ p {
     fill: black;
 }
 
+/* Alt CTA Button Styles */
+#startButton2 {
+    position: relative;
+    display: flex;
+    width: 276px;
+    height: auto;
+    align-items: center;
+    cursor: pointer;
+}
+
+#startButton2 svg{
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.defPink{
+    fill: var(--Gulabi-200);
+}
+
+/* Make the SVG fill respond to the wrapper's hover/focus/active for keyboard + pointer users */
+#startButton2:hover .defPink,
+#startButton2:focus-visible .defPink {
+  fill: var(--Gulabi-300);
+}
+
+#startButton2:active .defPink {
+  fill: var(--Gulabi-400);
+  transform: translateY(1px);
+}
+
+#startButton2 p{
+    position: absolute;
+    left: 38px;
+    bottom: 24.486px;
+
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 28px;
+    color: var(--Text-Body-Black);
+}
+
 /* Main CTA styles END */
 
 .dividerCat{
@@ -423,6 +467,50 @@ h1 {
 }
 
 /* --- Quiz Question Styles --- */
+
+.qNoCat{
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.qNoCat p{
+    display: flex;
+    width: 22px;
+    height: 24px;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    right: 8px;
+    bottom: 6px;
+
+    font-size: 20px;
+    font-family: 'bree serif', serif;
+    text-align: center;
+}
+
+.qNoCat2{
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.qNoCat2 p{
+    display: flex;
+    width: 19px;
+    height: 24px;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    left: 16px;
+    bottom: 13px;
+
+    font-size: 20px;
+    font-family: 'bree serif', serif;
+    text-align: center;
+}
 
 #questionsContainer {
   display: flex;
