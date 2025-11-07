@@ -275,7 +275,7 @@ function showResult() {
   const soLine = archetype ? archetype.socialLine: '';
   // Build a polished result card similar to the design reference
   const pageUrl = encodeURIComponent(location.href);
-  const shareText = encodeURIComponent(`Hey there! I just took the ‘Which Meowseum Cat Are You’ quiz and turns out I’m a ${name}${soLine}! <br/>What cat are you? Take the quiz here`);
+  const shareText = encodeURIComponent(`Hey there!\nI just took the ‘Which Meowseum Cat Are You’ quiz and turns out I’m a ${name}${soLine}!\n\nWhat cat are you? Take the quiz and find out\n`); //Figure out how to add a line break
   const whatsapp = `https://wa.me/?text=${shareText}%20${pageUrl}`;
   const twitter = `https://twitter.com/intent/tweet?text=${shareText}%20${pageUrl}`;
   const facebook = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}&quote=${shareText}`;
