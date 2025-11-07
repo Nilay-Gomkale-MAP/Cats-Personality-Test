@@ -1,5 +1,5 @@
 (async function() {
-  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxrRtglqdqsx5L_aHecR_BtLgSE4mJd4fyXmnbxmT54px6qJoOzVVKBeWgwLxT5-bvh/exec'; // <-- replace with your Web App URL (paste exactly)
+  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxfU4UQO35wqj887QwQvlEbrFNOJxU8RWlO5jGMYhJ7vwhjXuQ8v7AtNfvt6vEKLuJJxw/exec'; // <-- replace with your Web App URL (paste exactly)
   const submitBtn = document.getElementById('submitLead');
   const emailInput = document.getElementById('email');
   const fnameInput = document.getElementById('fname');
