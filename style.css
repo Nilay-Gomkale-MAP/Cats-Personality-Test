@@ -639,7 +639,7 @@ h1 {
   align-self: stretch;
 }
 
-#resultStep p{
+#resultStep p {
     font-family: "Bree Serif", serif;
     font-size: 1.5rem;
     line-height: 2rem;
@@ -649,7 +649,7 @@ h1 {
 #leadStep {
   position: relative;
   display: none;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   max-width: 376px;
   margin: 0 auto;
   flex-direction: column;
@@ -660,10 +660,52 @@ h1 {
   margin-top: 24px;
 }
 
-input[type="text"], input[type="email"] {
-    font-family: 'Source Sans 3', sans-serif;
+.constentSection{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+.consentRow{
+    align-self: stretch;
+}
+
+.consentRow label{
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+}
+
+.consentRow input[type="checkbox"] {
+  width: 20px !important;
+  height: 20px !important;
+  margin: 2px 0 0 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-appearance: checkbox; /* Safari / iOS */
+  appearance: checkbox; /* Standard */
+  vertical-align: middle;
+  transform: none !important;
+}
+
+.consentText {
+    flex: 1 0 0;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  color: var(--Text-Body-Black);
   align-self: stretch;
-  padding: 12px 24px;
+}
+
+input[type="text"], input[type="email"] {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 1rem;
+  align-self: stretch;
+  padding: 16px 10px;
   border-radius: var(--rounded-base, 0.25rem);
   border: 1px solid var(--Background-Input-Field-Stroke-Default, #ADADAD);
   background: var(--Background-Input-Field-Fill-Default, #F8F8F8);
@@ -687,21 +729,6 @@ input[type="text"], input[type="email"] {
   background: var(--Gulabi-400);
 }
 
-/* #skipLead {
-  display: inline-block;
-  color: var(--Text-Body-Black);
-  background: none;
-  border: none;
-  font-weight: 600;
-  cursor: pointer;
-  text-decoration: underline;
-  font-size: 0.9rem;
-}
-
-#skipLead:hover {
-  color: var(--Gulabi-500);
-} */
-
 .errorMsg {
   color: var(--Gulabi-500);
   background:var(--Gulabi-100);
@@ -720,7 +747,7 @@ input[type="text"], input[type="email"] {
   padding: 20px 16px;
   text-align: left;
   animation: fadeIn 0.5s ease forwards;
-  max-width: 512px;
+  max-width: 436px;
   margin-left: auto;
   margin-right: auto;
 }

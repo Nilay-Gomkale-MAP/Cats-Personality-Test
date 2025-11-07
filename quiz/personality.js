@@ -287,7 +287,7 @@ function showResult() {
       <p><strong>You scored ${score} out of ${quizData.length} points!</strong></p>
       <p>${desc}</p>
     </div>
-    <p class="share-promo">Share this Quiz with your friends and family to<br/>test their knowledge</p>
+    <p class="share-promo">Share this Quiz with your friends and family to test their knowledge</p>
     <div class="shareRow">
       <a class="share-button" href="${whatsapp}" target="_blank" rel="noopener" aria-label="Share on WhatsApp">
         <span class="label">WhatsApp</span>
