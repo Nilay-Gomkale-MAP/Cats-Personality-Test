@@ -118,25 +118,29 @@ const scoreArchetypes = [
     name: 'Mischievous Cat',
     range: [0,2],
     desc: "Congratulations, you’ve cleverly avoided all the right answers.",
-    image: '../artwork-images/archetype-mischievous.jpg'
+    image: '../artwork-images/archetype-mischievous.jpg',
+    socialLine:' who has cleverly avoided all the right answers!'
   },
   {
     name: 'Lazy Cat',
     range: [3,5],
     desc: "Come on! Wake up and try again, claw your way to the top.",
-    image: '../artwork-images/archetype-lazy.jpg'
+    image: '../artwork-images/archetype-lazy.jpg',
+    socialLine:' who needs to wake up and claw my way to the top!'
   },
   {
     name: 'Fierce Cat',
     range: [6,8],
     desc: "Almost a purrr-fect score. You’re hard working and relentless, one more try and you’ll nail it.",
-    image: '../artwork-images/archetype-fierce.jpg'
+    image: '../artwork-images/archetype-fierce.jpg',
+    socialLine:' with an almost purr-fect score!'
   },
   {
     name: 'Scholarly Cat',
     range: [9,10],
     desc: "Genius you. Witty, quick and always one paw ahead!",
-    image: '../artwork-images/archetype-scholarly.jpg'
+    image: '../artwork-images/archetype-scholarly.jpg',
+    socialLine:' who is always one paw ahead!'
   }
 ];
 
@@ -268,9 +272,10 @@ function showResult() {
   const archetype = scoreArchetypes.find(a => score >= a.range[0] && score <= a.range[1]);
   const name = archetype ? archetype.name : 'Unknown Cat';
   const desc = archetype ? archetype.desc : '';
+  const soLine = archetype ? archetype.socialLine: '';
   // Build a polished result card similar to the design reference
   const pageUrl = encodeURIComponent(location.href);
-  const shareText = encodeURIComponent(`I scored ${score}/${quizData.length} on the Meowseum quiz — ${name}!`);
+  const shareText = encodeURIComponent(`Hey there! I just took the ‘Which Meowseum Cat Are You’ quiz and turns out I’m a ${name}${soLine}! <br/>What cat are you? Take the quiz here`);
   const whatsapp = `https://wa.me/?text=${shareText}%20${pageUrl}`;
   const twitter = `https://twitter.com/intent/tweet?text=${shareText}%20${pageUrl}`;
   const facebook = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}&quote=${shareText}`;
