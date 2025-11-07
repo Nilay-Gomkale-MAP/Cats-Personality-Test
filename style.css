@@ -639,6 +639,12 @@ h1 {
   align-self: stretch;
 }
 
+/* Make site hyperlinks use Gulabi 500 by default; hover gets a slightly darker tint */
+a .privacyPolicy, a.privacyPolicy:link, a .privacyPolicy:visited {
+  color: var(--Gulabi-500);
+  outline: none;
+}
+
 #resultStep p {
     font-family: "Bree Serif", serif;
     font-size: 1.5rem;
@@ -736,6 +742,13 @@ input[type="text"], input[type="email"] {
   padding: 12px 20px;
   border-radius: 6px;
   display: none;
+}
+
+/* Success variant re-uses the same container */
+.errorMsg.success {
+  color: #0B6623; /* dark green */
+  background: #E6F7EA; /* light green */
+  border: 1px solid #8BD09B;
 }
 
 #result {

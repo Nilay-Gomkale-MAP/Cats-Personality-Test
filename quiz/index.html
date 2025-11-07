@@ -50,7 +50,7 @@
 
         <div id="resultStep">
           <!-- <h2>Almost done!</h2> -->
-          <div class="errorMsg"></div>
+          <div class="errorMsg" role="status" aria-live="polite"></div>
           <!-- <p>Click Continue to get your results<br/>[Can insert reward reminder here]</p> -->
           <p>Ready to see which cat you are?</p>
           <button type="button" class="submitButton" id="getResult">Submit to get your Results!</button>
@@ -188,7 +188,6 @@
       </div>
       <div id="leadStep">
           <h2>Sign up for our Newsletter</h2>
-          <div class="errorMsg"></div>
           <input type="text" id="fname" placeholder="First Name (optional)">
           <input type="email" id="email" placeholder="Email" aria-label="Email address">
 
@@ -196,7 +195,7 @@
             <p class="consentText">I consent to:</p>
             <div class="consentRow">
               <label for="gdprConsent">
-                <input type="checkbox" id="gdprConsent"><p class="consentText">Having my data stored as per MAP’s <a href="https://map-india.org/terms-and-conditions/?tab=privacy-tab" target="_blank" rel="noopener">Privacy Policy</a>.*</p>
+                <input type="checkbox" id="gdprConsent"><p class="consentText">Having my data stored as per MAP’s <a class="privacyPolicy" href="https://map-india.org/terms-and-conditions/?tab=privacy-tab" target="_blank" rel="noopener">Privacy Policy</a>.*</p>
               </label>
             </div>
 
@@ -207,6 +206,7 @@
             </div>
           </div>
 
+          <div class="errorMsg"></div>
           <button type="button" class="submitButton" id="submitLead">Submit</button>
       </div>
     </div>

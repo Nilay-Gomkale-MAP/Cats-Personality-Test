@@ -325,7 +325,7 @@ function showResult() {
   leadStep.style.display = "flex";
   navBack.style.display = "none";
   restartQuiz.style.display = "flex";
-  dividerCat.style.display = "block";
+  dividerCat.style.display = "flex";
   resultBox.scrollIntoView({ behavior: "smooth" });
   if(progressFill) progressFill.style.width = '100%';
 }

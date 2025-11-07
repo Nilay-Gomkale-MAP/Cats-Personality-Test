@@ -5,14 +5,38 @@ document.getElementById('submitLead').addEventListener('click', async function()
   const email = document.getElementById('email').value.trim();
   const gdpr = document.getElementById('gdprConsent').checked;
   const comms = document.getElementById('commsConsent').checked;
+  // Scope the message element to the lead step so we don't accidentally
+  // update the quiz/result message container earlier in the DOM.
+  const errorMsg = document.querySelector('#leadStep .errorMsg');
+  if (errorMsg) {
+    errorMsg.style.display = 'none';
+    errorMsg.classList.remove('success');
+    errorMsg.innerText = '';
+  }
 
   if (!email) {
-    alert('Please enter your email.');
+    if (errorMsg) {
+      errorMsg.innerText = 'Please enter your email address';
+      errorMsg.style.display = 'block';
+    }
+    return;
+  }
+
+  // basic email format sanity check
+  const emailOk = /\S+@\S+\.\S+/.test(email);
+  if (!emailOk) {
+    if (errorMsg) {
+      errorMsg.innerText = 'Please enter a valid email address';
+      errorMsg.style.display = 'block';
+    }
     return;
   }
 
   if (!gdpr) {
-    alert('You must consent to data storage.');
+    if (errorMsg) {
+      errorMsg.innerText = 'You must consent to data storage.';
+      errorMsg.style.display = 'block';
+    }
     return;
   }
 
@@ -26,10 +50,40 @@ document.getElementById('submitLead').addEventListener('click', async function()
   params.append('ua', navigator.userAgent);
 
   // Send data to Google Sheet
+  const submitBtn = document.getElementById('submitLead');
+  submitBtn.disabled = true;
+  submitBtn.setAttribute('aria-disabled', 'true');
+  const prevText = submitBtn.innerText;
+  submitBtn.innerText = 'Sending...';
+
   fetch(endpoint, {
     method: 'POST',
     body: params
   })
-  .then(() => alert('Thanks! Your info was saved.'))
-  .catch(() => alert('Something went wrong — please try again.'));
+  .then((res) => {
+    // treat non-2xx as an error
+    if (!res.ok) throw new Error('Network response was not ok');
+    // show success message in the lead form (scoped)
+    if (errorMsg) {
+      errorMsg.classList.add('success');
+      errorMsg.innerText = 'Thanks — your info was saved.';
+      errorMsg.style.display = 'block';
+    }
+    submitBtn.innerText = 'Submitted';
+    submitBtn.disabled = true;
+    submitBtn.setAttribute('aria-disabled', 'true');
+    // optionally collapse the lead form after a moment
+    setTimeout(() => {
+      const leadStep = document.getElementById('leadStep');
+      if (leadStep) leadStep.style.opacity = '0.98';
+    }, 400);
+  })
+  .catch((err) => {
+    console.error('Lead submit failed', err);
+    errorMsg.classList.remove('success');
+    errorMsg.innerText = 'There was a problem submitting your signup. Please try again.';
+    errorMsg.style.display = 'block';
+    submitBtn.disabled = false;
+    submitBtn.innerText = prevText;
+  });
 });
