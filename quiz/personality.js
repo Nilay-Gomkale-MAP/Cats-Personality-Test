@@ -1,3 +1,4 @@
+// Quiz Questions insert here with Options
 const quizData = [
   {
     q: "This prolific Bengali artist, inspired by Kalighat Patua style, painted over 20,000 artworks in their lifetime—nearly 10 daily! What is their name?",
@@ -101,7 +102,7 @@ const quizData = [
   }
 ];
 
-// New descriptions for score-based archetypes
+// Scored Based System with Cat Archetype description and scoring ranges - also includes SM media description line
 const scoreArchetypes = [
   {
     name: 'Mischievous Cat',
@@ -133,6 +134,7 @@ const scoreArchetypes = [
   }
 ];
 
+// Call for the Questions Div from the HTML file to dynamically add questions from the above arrays to the page
 const questionsContainer = document.getElementById("questionsContainer");
 
 // Render questions; attach data-correct attribute to inputs for scoring
@@ -227,7 +229,7 @@ const restartQuiz = document.getElementById('restartQuiz');
 const quizHeader = document.getElementById('quizHeader');
 const leadStep = document.getElementById('leadStep');
 const resultBox = document.getElementById('result');
-const dividerCat = document.querySelector('.dividerCat');
+// const dividerCat = document.querySelector('.dividerCat');
 const errorMsg = document.querySelector('.errorMsg');
 const form = document.getElementById('quizForm');
 
@@ -241,6 +243,7 @@ function tallyAnswers() {
   return correctCount;
 }
 
+// Check if all questions have been answered before proceeding to the result screen
 function validateQuiz() {
   for (let i = 1; i <= quizData.length; i++) {
     const selected = document.querySelector(`input[name="q${i}"]:checked`);
@@ -254,6 +257,7 @@ function validateQuiz() {
   return true;
 }
 
+// Result Page Function
 function showResult() {
   const score = tallyAnswers();
 
@@ -272,6 +276,7 @@ function showResult() {
   // Pick an archetype image from the matched archetype object (if provided)
   const imgSrc = archetype && archetype.image ? archetype.image : '';
 
+  // Dynamic Result Page
   resultBox.innerHTML = `
     <h3 class="result-title">${name}</h3>
     <div class="result-image" aria-hidden="true">
@@ -283,20 +288,20 @@ function showResult() {
     </div>
     <p class="share-promo">Share this Quiz with your friends and family to test their knowledge</p>
     <div class="shareRow">
-      <a class="share-button" href="${whatsapp}" target="_blank" rel="noopener" aria-label="Share on WhatsApp">
+  <button id="wa-sharing" class="share-button" onclick="window.open('${whatsapp}','_blank','noopener,noreferrer')" aria-label="Share on WhatsApp">
         <span class="label">WhatsApp</span>
         <!-- Simple inline icon: using text fallback for now -->
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" fill="none">
           <path class="WA-share-btn" d="M0 28L1.96816 20.8098C0.753665 18.7052 0.1155 16.3193 0.116666 13.8728C0.120166 6.22417 6.34432 0 13.9918 0C17.703 0.00116667 21.1866 1.44667 23.8069 4.06933C26.4261 6.692 27.8681 10.178 27.8669 13.8857C27.8634 21.5355 21.6393 27.7597 13.9918 27.7597C11.6701 27.7585 9.38231 27.1763 7.35582 26.0703L0 28ZM7.69648 23.5585C9.65181 24.7193 11.5185 25.4147 13.9871 25.4158C20.3431 25.4158 25.5208 20.2428 25.5243 13.8833C25.5266 7.511 20.3735 2.345 13.9965 2.34267C7.63582 2.34267 2.46166 7.51567 2.45933 13.874C2.45816 16.4698 3.21883 18.4135 4.49632 20.447L3.33083 24.703L7.69648 23.5585ZM20.9813 17.1838C20.895 17.0392 20.664 16.9528 20.3163 16.779C19.9698 16.6052 18.2653 15.7663 17.9468 15.6508C17.6295 15.5353 17.3985 15.477 17.1663 15.8247C16.9353 16.1712 16.2703 16.9528 16.0685 17.1838C15.8666 17.4148 15.6636 17.444 15.3171 17.2702C14.9706 17.0963 13.853 16.7312 12.5288 15.5493C11.4986 14.63 10.8021 13.4948 10.6003 13.1472C10.3985 12.8007 10.5793 12.6128 10.752 12.4402C10.9083 12.285 11.0985 12.0353 11.2723 11.8323C11.4485 11.6317 11.5056 11.487 11.6223 11.2548C11.7378 11.0238 11.6806 10.8208 11.5931 10.647C11.5056 10.4743 10.8126 8.7675 10.5245 8.07333C10.2421 7.39783 9.95631 7.48883 9.74398 7.47833L9.07898 7.46667C8.84798 7.46667 8.47231 7.553 8.15498 7.90067C7.83765 8.24833 6.94165 9.086 6.94165 10.7928C6.94165 12.4997 8.18415 14.1482 8.35681 14.3792C8.53065 14.6102 10.801 18.1125 14.2788 19.614C15.106 19.971 15.7523 20.1845 16.2551 20.3443C17.0858 20.608 17.8418 20.5707 18.4391 20.482C19.1053 20.3828 20.4901 19.6432 20.7795 18.8335C21.0688 18.0227 21.0688 17.3285 20.9813 17.1838Z"/>
         </svg>
-      </a>
-      <a class="share-button" href="${twitter}" target="_blank" rel="noopener" aria-label="Share on X (Twitter)">
+      </button>
+  <button id="x-sharing" class="share-button" onclick="window.open('${twitter}','_blank','noopener,noreferrer')" aria-label="Share on X (Twitter)">
         <span class="label">X</span>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" fill="none">
           <path class="X-share-btn" d="M21.3808 2.22119H25.3165L16.7181 12.0486L26.8334 25.4215H18.9132L12.7098 17.3109L5.61169 25.4215H1.67359L10.8704 14.91L1.16675 2.22119H9.28804L14.8954 9.63458L21.3808 2.22119ZM19.9994 23.0658H22.1803L8.10304 4.45318H5.76279L19.9994 23.0658Z"/>
         </svg>
-      </a>
-      <a class="share-button" href="${facebook}" target="_blank" rel="noopener" aria-label="Share on Facebook">
+      </button>
+  <button id="fb-sharing" class="share-button" onclick="window.open('${facebook}','_blank','noopener,noreferrer')" aria-label="Share on Facebook">
         <span class="label">Facebook</span>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" fill="none">
           <g clip-path="url(#clip0_200_672)">
@@ -308,11 +313,11 @@ function showResult() {
             </clipPath>
           </defs>
         </svg>
-      </a>
+      </button>
     </div>
 `;
 
-  // Display adjustments
+  // Display adjustments -> Hide question page elements and show results content
   resultBox.style.display = "block";
   quizHeader.style.display = "none";
   form.style.display = "none";
@@ -324,7 +329,7 @@ function showResult() {
   if(progressFill) progressFill.style.width = '100%';
 }
 
-// Event Listeners
+// Event Listeners -> Resets the page view to the top when result button is clicked
 document.getElementById('getResult').addEventListener('click', () => {
   if (!validateQuiz()) return;
   errorMsg.style.display = "none";
@@ -342,6 +347,7 @@ document.getElementById('getResult').addEventListener('click', () => {
   }, 360);
 });
 
-document.getElementById('restartQuiz').addEventListener('click', () => {
-  location.reload();
-});
+//Reloads page when reset quiz is clicked
+// document.getElementById('restartQuiz').addEventListener('click', () => {
+//   location.reload();
+// });
