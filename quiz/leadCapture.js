@@ -1,8 +1,8 @@
 // Script function for lead generation data funneling to Google Sheets API
 // Append/replace your submit handler with this version that includes reCAPTCHA v3
 (function () {
-  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbwIxymI7tGZr4uNFmRNQts5z9dX-d2VquPuvYxsEc_Ta8COgoH-zNcoNbJGr4wJllT6aw/exec';           // <-- paste your Apps Script /exec URL here
-  const RECAPTCHA_KEY = '6LcI3AcsAAAAAMVNpFDJhAwM21aaf7mosgm-UzB7'; // <-- paste your reCAPTCHA v3 site key here
+  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbw9EP2LLzCvgjECbpVlk9wKaUdwcGTf6fSik04JOhZvuzSyc8KOo7p9IotGJris3VyzOw/exec';           // <-- paste your Apps Script /exec URL here
+  const RECAPTCHA_KEY = '6Lcw6wcsAAAAAGNxy9LRS-6wbSWPg9M8c40N42mS'; // <-- paste your reCAPTCHA v3 site key here
 
   const submitBtn = document.getElementById('submitLead');
 
