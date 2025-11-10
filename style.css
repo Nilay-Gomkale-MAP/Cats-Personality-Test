@@ -623,7 +623,6 @@ a .privacyPolicy, a.privacyPolicy:link, a .privacyPolicy:visited {
   margin-bottom: 12px;
 }
 
-
 /* Lead generation section styling */
 #leadStep {
   position: relative;
@@ -805,6 +804,10 @@ input[type="text"], input[type="email"] {
   font-weight: 600;
   margin-top: 24px;
   font-size: 1.25rem;
+  max-width: 376px;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
 .shareRow {

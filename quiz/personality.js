@@ -229,6 +229,7 @@ const restartQuiz = document.getElementById('restartQuiz');
 const quizHeader = document.getElementById('quizHeader');
 const leadStep = document.getElementById('leadStep');
 const resultBox = document.getElementById('result');
+const resultPageHeader = document.getElementById('resultPageHeader');
 // const dividerCat = document.querySelector('.dividerCat');
 const errorMsg = document.querySelector('.errorMsg');
 const form = document.getElementById('quizForm');
@@ -278,7 +279,7 @@ function showResult() {
 
   // Dynamic Result Page
   resultBox.innerHTML = `
-    <h3 class="result-title">${name}</h3>
+    <h3 class="result-title ${name}">${name}</h3>
     <div class="result-image" aria-hidden="true">
       ${imgSrc ? `<img src="${imgSrc}" alt="${name}" />` : ''}
     </div>
