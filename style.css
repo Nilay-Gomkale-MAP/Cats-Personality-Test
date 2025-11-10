@@ -30,6 +30,7 @@ body {
   background: var(--primary-color);
 }
 
+/* All the content fits in here and is modified to be versatile between desktop to mobile with any complicated layout changes */
 .mainContainer{
   max-width: 700px;
   margin: 0px auto;
@@ -54,7 +55,7 @@ p {
   margin: 0px;
 }
 
-/* Map Logo Styles */
+/* Page top - Map Logo Styles */
 #logoContainer{
   display: flex; 
   justify-content: center; 
@@ -92,7 +93,7 @@ p {
 }
 /* Map Logo Styles END */
 
-/* TO BE MODIFIED: This is where the hero section creative would go */
+/* HERO SECTION STYLES */
 #heroSection {
   display: flex;
   flex-direction: column;
@@ -150,53 +151,9 @@ p {
   object-fit: cover; /* use 'contain' if you prefer no cropping */
 }
 
+/* HERO SECTION STYLES END */
+
 /* Main CTA Button styles */
-#startButton {
-  display: flex;
-  position: relative;
-  width: 248px;
-  padding: 16px 36px;
-  align-items: center;
-  border-radius: var(--rounded-full, 9999px);
-  border: 4px solid var(--Background-Primary, #000);
-  background: var(--Gulabi-200);
-  font-family: var(--body, "Source Sans 3");
-  font-size: 20px;
-  font-style: normal;
-  font-weight: var(--font-bold, 700);
-  line-height: 28px; /* 140% */
-  cursor:pointer;
-}
-
-#startButton:active {
-  background: var(--Gulabi-300);
-}
-
-#pawPrint{
-  width: 85px;
-  height: 85px;   
-  position: absolute;
-  right: -17px;
-  top: -25.011px;
-}
-
-#pawPrint path {
-  fill: var(--Gulabi-200);
-}
-
-#pawPrint .blackPath {
-  fill: black;
-}
-
-/* When the start button is pressed, change the paw color to match the active CTA */
-#startButton:active #pawPrint path {
-  fill: var(--Gulabi-300);
-}
-
-/* Optionally invert the black detail for contrast while active */
-#startButton:active #pawPrint .blackPath {
-  fill: black;
-}
 
 /* Alt CTA Button Styles */
 #startButton2 {
@@ -251,6 +208,7 @@ p {
 
 /* Main CTA styles END */
 
+/* Spacer Element Styling */
 .dividerCat{
   display: flex;
   padding: 0 16px;
@@ -271,6 +229,7 @@ p {
   }
 }
 
+/* Homepage Content Styling */
 #contentContainer {
   display: flex;
   padding: 24px 16px;
@@ -345,6 +304,8 @@ p {
   border: 1px solid var(--Gulabi-300);
 }
 
+/* Homepage Content Styling END */
+
 /* TEXTURE BACKGROUND */
 #bgTexture {
   position: fixed;
@@ -403,6 +364,8 @@ p {
 }
 
 /* PORT OVER FROM SUB-SHEET */
+
+/* back nav button styling */
 #navBack, #navBack p{
   font-family: 'Source Sans 3', sans-serif;
   font-weight: 600;
@@ -418,7 +381,8 @@ p {
   margin: 0;
 }
 
-#restartQuiz, #restartQuiz p{
+/* Restart Quiz button removed */
+/* #restartQuiz, #restartQuiz p{
   display: none;
   font-family: 'Source Sans 3', sans-serif;
   font-weight: 600;
@@ -427,7 +391,6 @@ p {
   cursor: pointer; 
   font-size: 1.25rem; 
   color: var(--Text-Body-Black); 
-  /* display: flex;  */
   align-items: center; 
   gap: 4px;
   padding: 0;
@@ -436,12 +399,13 @@ p {
 
 #restartQuiz p{
   display: block;
-}
+} */
 
 #navBack:active p, #navBack:hover p, #restartQuiz:active p, #restartQuiz:hover p{
   text-decoration: underline;
 }
 
+/* Page Header Style */
 h1 {
   font-family: "Bree Serif", serif;
   font-weight: 400;
@@ -475,6 +439,7 @@ h1 {
 
 /* --- Quiz Question Styles --- */
 
+/* Question numbering style */
 .qNoCat{
   position: relative;
   display: inline-flex;
@@ -497,29 +462,7 @@ h1 {
   text-align: center;
 }
 
-.qNoCat2{
-  position: relative;
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.qNoCat2 p{
-  display: flex;
-  width: 19px;
-  height: 24px;
-  flex-direction: column;
-  justify-content: center;
-  position: absolute;
-  right: 26.419px;
-  bottom: 8px;
-
-  font-size: 20px;
-  font-family: 'bree serif', serif;
-  text-align: center;
-}
-
+/* Container with all the dynamically added questions */
 #questionsContainer {
   display: flex;
   flex-direction: column;
@@ -529,6 +472,7 @@ h1 {
   justify-items: center;
 }
 
+/* Per question section box styling */
 .questionBox {
   display: flex;
   width: 100%;
@@ -653,6 +597,8 @@ a .privacyPolicy, a.privacyPolicy:link, a .privacyPolicy:visited {
   outline: none;
 }
 
+
+/* Result Button Styling */
 #resultStep p {
   font-family: "Bree Serif", serif;
   font-size: 1.5rem;
@@ -660,6 +606,8 @@ a .privacyPolicy, a.privacyPolicy:link, a .privacyPolicy:visited {
   margin-bottom: 12px;
 }
 
+
+/* Lead generation section styling */
 #leadStep {
   position: relative;
   display: none;
@@ -771,6 +719,7 @@ input[type="text"], input[type="email"] {
   border: 1px solid #8BD09B;
 }
 
+/* Result Card Styling */
 #result {
   display: none;
   /* margin-top: 24px; */
