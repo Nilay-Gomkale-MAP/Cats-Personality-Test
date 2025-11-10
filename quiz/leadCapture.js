@@ -1,69 +1,71 @@
-// Script function for lead generation data funneling to Google Sheets API
-// Append/replace your submit handler with this version that includes reCAPTCHA v3
 (function () {
-  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbw9EP2LLzCvgjECbpVlk9wKaUdwcGTf6fSik04JOhZvuzSyc8KOo7p9IotGJris3VyzOw/exec';           // <-- paste your Apps Script /exec URL here
-  const RECAPTCHA_KEY = '6Lcw6wcsAAAAAGNxy9LRS-6wbSWPg9M8c40N42mS'; // <-- paste your reCAPTCHA v3 site key here
+  const SITE_KEY = '6Lcw6wcsAAAAAGNxy9LRS-6wbSWPg9M8c40N42mS';                 // <- reCAPTCHA site key (public)
+  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbzd67x0G-hly4Er97YfQ2_khZsjb_sr6C844VrH0CARblbO05kS33uma_WwU8yrLy7wMg/exec';            // <- paste your Apps Script /exec URL
 
   const submitBtn = document.getElementById('submitLead');
-
-  async function showMsg(text, isError = true) {
-    const errorMsg = document.querySelector('#leadStep .errorMsg');
-    if (errorMsg) {
-      errorMsg.style.display = 'block';
-      errorMsg.classList.toggle('success', !isError);
-      errorMsg.innerText = text;
+  const showMsg = (text, isErr = true) => {
+    const el = document.querySelector('#leadStep .errorMsg');
+    if (el) {
+      el.style.display = 'block';
+      el.classList.toggle('success', !isErr);
+      el.textContent = text;
+    } else if (isErr) {
+      alert(text);
     } else {
-      if (isError) alert(text); else console.log(text);
+      console.log(text);
     }
+  };
+
+  if (!submitBtn) {
+    console.error('Submit button not found (#submitLead)');
+    return;
   }
 
   submitBtn.addEventListener('click', async function () {
-    const fname = document.getElementById('fname').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const gdpr = document.getElementById('gdprConsent').checked;
-    const comms = document.getElementById('commsConsent').checked;
+    // read fields
+    const fname = (document.getElementById('fname')?.value || '').trim();
+    const email = (document.getElementById('email')?.value || '').trim();
+    const gdpr = !!document.getElementById('gdprConsent')?.checked;
+    const comms = !!document.getElementById('commsConsent')?.checked;
 
-    // Basic frontend validation
+    // basic validation
     if (!email) return showMsg('Please enter your email address.');
     if (!/\S+@\S+\.\S+/.test(email)) return showMsg('Please enter a valid email address.');
     if (!gdpr) return showMsg('You must consent to data storage.');
 
-    // Disable UI
+    // UI lock
+    const prevText = submitBtn.innerText;
     submitBtn.disabled = true;
     submitBtn.setAttribute('aria-disabled', 'true');
-    const prevText = submitBtn.innerText;
-    submitBtn.innerText = 'Sending...';
+    submitBtn.innerText = 'Sending…';
 
     try {
-      // Get reCAPTCHA v3 token
-      const token = await grecaptcha.execute(RECAPTCHA_KEY, { action: 'submit' });
+      // Ensure grecaptcha loaded then get token
+      await new Promise(resolve => grecaptcha.ready(resolve));
+      const token = await grecaptcha.execute(SITE_KEY, { action: 'submit' });
 
-      // Build url-encoded body to avoid CORS preflight
-      const params = new URLSearchParams();
-      params.append('first_name', fname);
-      params.append('email', email);
-      params.append('gdpr_consent', gdpr ? 'true' : 'false');
-      params.append('comms_consent', comms ? 'true' : 'false');
-      params.append('source', 'meowseum-quiz');
-      params.append('quiz_id', 'meowseum-v1');
-      params.append('g_recaptcha_response', token);
-      params.append('ua', navigator.userAgent);
+      // Build FormData (do NOT set Content-Type: browser will set it)
+      const form = new FormData();
+      form.append('first_name', fname);
+      form.append('email', email);
+      form.append('gdpr_consent', gdpr ? 'true' : 'false');
+      form.append('comms_consent', comms ? 'true' : 'false');
+      form.append('source', 'meowseum-quiz');
+      form.append('quiz_id', 'meowseum-v1');
+      form.append('g_recaptcha_response', token);
+      form.append('ua', navigator.userAgent);
 
-      // POST as application/x-www-form-urlencoded
+      // Send POST (FormData => avoids preflight)
       const resp = await fetch(ENDPOINT, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-        },
-        body: params.toString()
+        body: form
       });
 
-      // Parse JSON response (Apps Script returns JSON)
-      const json = await resp.json();
-
+      // Attempt to parse JSON response
+      const json = await resp.json(); // will fail if server response blocked by CORS
       if (resp.ok && json.ok) {
         showMsg(json.deduped ? "You're already registered — thanks!" : 'Thanks — your info was saved.', false);
-        // clear form
+        // optional: clear form
         document.getElementById('email').value = '';
         document.getElementById('fname').value = '';
         document.getElementById('gdprConsent').checked = false;
@@ -71,13 +73,14 @@
         submitBtn.innerText = 'Submitted';
         submitBtn.disabled = true;
       } else {
-        const errText = json && json.error ? json.error : 'Submission failed';
-        showMsg(errText);
+        console.error('Server returned error:', json);
+        showMsg(json.error || 'Submission failed — please try again.');
         submitBtn.innerText = prevText;
         submitBtn.disabled = false;
       }
     } catch (err) {
       console.error('Lead submit failed', err);
+      // Typical: CORS response blocked (no Access-Control-Allow-Origin) or network error
       showMsg('There was a problem submitting your signup. Please try again.');
       submitBtn.innerText = prevText;
       submitBtn.disabled = false;
