@@ -173,23 +173,7 @@ p {
   width: 100%;
   height: auto;
   flex-shrink: 0;
-  pointer-events: none;
-}
-
-.defPink{
-  fill: var(--Gulabi-200);
-  pointer-events: none;
-}
-
-/* Make the SVG fill respond to the wrapper's hover/focus/active for keyboard + pointer users */
-#startButton2:hover .defPink,
-#startButton2:focus-visible .defPink {
-  fill: var(--Gulabi-300);
-}
-
-#startButton2:active .defPink {
-  fill: var(--Gulabi-400);
-  transform: translateY(1px);
+  /* pointer-events: none; */
 }
 
 #startButton2 p{
@@ -202,8 +186,39 @@ p {
   font-weight: 700;
   font-style: normal;
   line-height: 28px;
-  color: var(--Text-Body-Black);
+  color: var(--Gulabi-200);
   pointer-events: none;
+}
+
+.defPaw{
+  fill: var(--Gulabi-200);
+  stroke: var(--Gulabi-200);
+  /* pointer-events: none; */
+}
+
+.defButton{
+  fill: var(--Text-Body-Black);
+  stroke: var(--Gulabi-200);
+}
+
+/* Make the SVG fill respond to the wrapper's hover/focus/active for keyboard + pointer users */
+#startButton2:hover .defPaw,
+#startButton2:focus-visible .defPaw {
+  fill: var(--Gulabi-200);
+}
+
+#startButton2:active .defPaw, #startButton2:hover .defPaw {
+  fill: var(--Text-Body-Black);
+  stroke: var(--Text-Body-Black);
+}
+
+#startButton2:active .defButton, #startButton2:hover .defButton {
+  fill: var(--Gulabi-200);
+  stroke: var(--Text-Body-Black);
+}
+
+#startButton2:active p, #startButton2:hover p {
+  color: var(--Text-Body-Black);
 }
 
 /* Main CTA styles END */
@@ -299,9 +314,11 @@ p {
   font-weight: 600;
   font-family: 'source sans 3', sans-serif;
 }
+
 #learnMore:active, #learnMore:hover {
-  background: var(--Gulabi-200);
-  border: 1px solid var(--Gulabi-300);
+  background: var(--Text-Body-Black);
+  border: 1px solid var(--Gulabi-200);
+  color: var(--Gulabi-200);
 }
 
 /* Homepage Content Styling END */

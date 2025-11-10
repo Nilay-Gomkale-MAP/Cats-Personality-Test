@@ -323,7 +323,7 @@ function showResult() {
   form.style.display = "none";
   leadStep.style.display = "flex";
   navBack.style.display = "none";
-  restartQuiz.style.display = "flex";
+  // restartQuiz.style.display = "flex";
   dividerCat.style.display = "flex";
   resultBox.scrollIntoView({ behavior: "smooth" });
   if(progressFill) progressFill.style.width = '100%';
