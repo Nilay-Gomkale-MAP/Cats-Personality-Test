@@ -173,7 +173,7 @@ p {
   width: 100%;
   height: auto;
   flex-shrink: 0;
-  /* pointer-events: none; */
+  pointer-events: none;
 }
 
 #startButton2 p{
@@ -193,7 +193,7 @@ p {
 .defPaw{
   fill: var(--Gulabi-200);
   stroke: var(--Gulabi-200);
-  /* pointer-events: none; */
+  pointer-events: none;
 }
 
 .defButton{
