@@ -894,3 +894,7 @@ input[type="text"], input[type="email"] {
 #resultStep.highlight {
   animation: highlightFlash 760ms ease forwards;
 }
+
+/* .grecaptcha-badge {
+  visibility: hidden !important;
+} */

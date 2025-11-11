@@ -1,7 +1,7 @@
 // Quiz Questions insert here with Options
 const quizData = [
   {
-    q: "This prolific Bengali artist, inspired by Kalighat Patua style, painted over 20,000 artworks in their lifetime—nearly 10 daily! What is their name?",
+    q: "This prolific Bengali artist, inspired by the Kalighat Patua style, painted over 20,000 artworks in their lifetime—nearly 10 daily! What is their name?",
     image: "",
     options: [
       { text: "Jogen Chowdhury", correct: false },
@@ -25,7 +25,7 @@ const quizData = [
     image: "",
     options: [
       { text: "Cat got your tongue", correct: true },
-      { text: "Cats out of the bag", correct: false },
+      { text: "Cat's out of the bag", correct: false },
       { text: "Curiosity killed the cat", correct: false },
       { text: "Cats have nine lives", correct: false }
     ]
@@ -229,7 +229,6 @@ const restartQuiz = document.getElementById('restartQuiz');
 const quizHeader = document.getElementById('quizHeader');
 const leadStep = document.getElementById('leadStep');
 const resultBox = document.getElementById('result');
-const resultPageHeader = document.getElementById('resultPageHeader');
 // const dividerCat = document.querySelector('.dividerCat');
 const errorMsg = document.querySelector('.errorMsg');
 const form = document.getElementById('quizForm');
@@ -325,7 +324,7 @@ function showResult() {
   leadStep.style.display = "flex";
   navBack.style.display = "none";
   // restartQuiz.style.display = "flex";
-  dividerCat.style.display = "flex";
+  // dividerCat.style.display = "flex";
   resultBox.scrollIntoView({ behavior: "smooth" });
   if(progressFill) progressFill.style.width = '100%';
 }
